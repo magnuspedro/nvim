@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/magnus/.config/nvim/general'
+let g:netrw_dirhist_8='/home/magnus/.config'
+let g:netrw_dirhist_7='/home/magnus/.config/nvim'
+let g:netrw_dirhist_6='/home/magnus/.config/nvim/vim-plugins'
+let g:netrw_dirhist_5='/home/magnus/.config'
+let g:netrw_dirhist_4='/home/magnus'
+let g:netrw_dirhist_3='/home/magnus/.config'
+let g:netrw_dirhist_2='/home/magnus/.config/nvim'
+let g:netrw_dirhist_1='/home/magnus/.cache/Opendesktop.org'
