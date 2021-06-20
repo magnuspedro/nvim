@@ -8,8 +8,12 @@ nnoremap <c-f> :Ag<space>
 " Tree
 nnoremap <c-\> :NERDTreeToggle<cr>
 
+" Comment code
 nmap ;; <plug>NERDCommenterToggle
 vmap ;; <plug>NERDCommenterToggle
+
+" Open terminal
+nnoremap <leader>t :split term://zsh<cr>
 
 " Better window navigation
 nnoremap <c-h> <c-w>h
