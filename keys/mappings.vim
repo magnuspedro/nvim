@@ -5,9 +5,6 @@ nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<space>
 
-" Tree
-nnoremap <c-\> :NERDTreeToggle<cr>
-
 " Comment code
 nmap ;; <plug>NERDCommenterToggle
 vmap ;; <plug>NERDCommenterToggle

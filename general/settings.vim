@@ -2,7 +2,8 @@
 let g:mapleader = "\<Space>"
 
 colorscheme gruvbox                     " Set the color schema to gruvbox
-syntax enable                           " Enables syntax highlighing
+set termguicolors                       " St color to termguicolors
+syntax enable                           " Enables syntax highlighting
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
