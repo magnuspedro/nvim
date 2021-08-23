@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'sheerun/vim-polyglot' 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
@@ -14,11 +13,5 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kamykn/spelunker.vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
