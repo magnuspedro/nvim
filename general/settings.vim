@@ -21,7 +21,7 @@ set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
 set laststatus=0                        " Always display the status line
 set number                              " Line numbers
-"set relativenumber                      " Relative Line numbers
+set relativenumber                      " Relative Line numbers
 set background=dark                     " Set the colorscheme background to black
 set cursorline                          " Enable highlighting of the current line
 set showtabline=2                       " Always show tabs

@@ -6,8 +6,8 @@ nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<space>
 
 " Comment code
-nmap ;; <plug>NERDCommenterToggle
-vmap ;; <plug>NERDCommenterToggle
+nmap == <plug>NERDCommenterToggle
+vmap == <plug>NERDCommenterToggle
 
 " Open terminal
 nnoremap <leader>t :split term://zsh<cr>
@@ -23,3 +23,6 @@ nnoremap <leader>. `.
 
 " Delete without save 
 vnoremap <leader>p "_dP
+
+" Y copy the rest of the file
+nnoremap Y y$

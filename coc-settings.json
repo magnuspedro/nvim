@@ -1,4 +1,4 @@
   {
-  "suggest.noselect": false,
-  "eslint.autoFixOnSave": true
-}
+    "suggest.noselect": false,
+    "eslint.autoFixOnSave": true
+  }
