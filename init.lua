@@ -1,0 +1,6 @@
+require('config.settings')
+require('config.keybinds')
+require('config.plugins')
+require('config.lsp')
+require('config.tree')
+require('config.telescope')
