@@ -6,7 +6,7 @@ o.clipboard = 'unnamedplus'
 
 -- Better UI
 o.number = true
-o.numberwidth = 1	
+o.numberwidth = 1
 o.relativenumber = true
 
 -- Map <leader>
@@ -14,7 +14,7 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 -- Config gruvbox
-o.background = "dark" 
+o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 
 -- Better editing experience
