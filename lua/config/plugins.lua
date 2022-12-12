@@ -17,5 +17,6 @@ return require('packer').startup(function()
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'mfussenegger/nvim-jdtls'
+    use 'terrortylor/nvim-comment'
 
 end)
