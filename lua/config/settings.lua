@@ -3,6 +3,9 @@ local o = vim.o
 local set = vim.opt
 local api = vim.api
 
+-- Disables Mouse
+vim.opt.mouse = ""
+
 -- Makes neovim and host OS clipboard play nicely with each other
 o.clipboard = 'unnamedplus'
 
