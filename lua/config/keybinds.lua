@@ -5,7 +5,7 @@ end
 -- Better window navegation
 map('n', '<c-h>', '<c-w>h')
 map('n', '<c-j>', '<c-w>j')
-map('n', '<c-k>', '<c-w>k')
+map('n', '<c-k>', '<c-k>k')
 map('n', '<c-l>', '<c-w>l')
 
 -- Got to previus insert

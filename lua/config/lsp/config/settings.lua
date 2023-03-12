@@ -32,16 +32,14 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
--- Java
-local config = {
-    cmd = { '/usr/share/java/jdtls/bin/jdtls' },
-    root_dir = vim.fs.dirname(vim.fs.find({ '.gradlew', '.git', 'mvnw' }, { upward = true })[1]),
-}
-require('jdtls').start_or_attach(config)
-
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
+}
+require('lspconfig')['jdtls'].setup{ 
+    cmd = { 'jdtls' },
+    on_attach = on_attach,
+    flags = lsp_flags,
 }
 require('lspconfig')['pyright'].setup {
     on_attach = on_attach,
