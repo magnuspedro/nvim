@@ -27,7 +27,7 @@ local on_attach = function(client, bufnr)
     end, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<A-CR>', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
@@ -36,10 +36,11 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
-require('lspconfig')['jdtls'].setup{ 
-    cmd = { 'jdtls' },
+require('lspconfig')['jdtls'].setup{
+    cmd = { "jdtls" },
     on_attach = on_attach,
     flags = lsp_flags,
+    -- root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
 }
 require('lspconfig')['pyright'].setup {
     on_attach = on_attach,

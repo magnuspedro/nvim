@@ -1,7 +1,6 @@
 require("mason").setup()
 
 return require('packer').startup(function()
-
     use 'ellisonleao/gruvbox.nvim'
     use 'neovim/nvim-lspconfig'
     use 'williamboman/mason.nvim'
@@ -12,11 +11,10 @@ return require('packer').startup(function()
     use 'hrsh7th/nvim-cmp'
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
-    use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' } }
+    use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' }, file_ignore_patterns = { "node_modules", "target" } }
     use 'udalov/kotlin-vim'
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'mfussenegger/nvim-jdtls'
     use 'terrortylor/nvim-comment'
-
 end)
