@@ -36,12 +36,6 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
-require('lspconfig')['jdtls'].setup{
-    cmd = { "jdtls" },
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
-}
 require('lspconfig')['pyright'].setup {
     on_attach = on_attach,
     flags = lsp_flags,
@@ -59,10 +53,6 @@ require('lspconfig')['rust_analyzer'].setup {
     }
 }
 require 'lspconfig'.kotlin_language_server.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-require 'lspconfig'.jdtls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
 }
