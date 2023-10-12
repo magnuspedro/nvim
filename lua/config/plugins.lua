@@ -1,7 +1,6 @@
-require("mason").setup()
-
 return require('packer').startup(function()
-    use 'ellisonleao/gruvbox.nvim'
+    use { "ellisonleao/gruvbox.nvim" }
+    use { "catppuccin/nvim", as = "catppuccin" }
     use 'neovim/nvim-lspconfig'
     use 'williamboman/mason.nvim'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -17,4 +16,6 @@ return require('packer').startup(function()
     }
     use 'mfussenegger/nvim-jdtls'
     use 'terrortylor/nvim-comment'
+    use 'mfussenegger/nvim-dap'
+    use 'alexghergh/nvim-tmux-navigation'
 end)
