@@ -77,3 +77,13 @@ require 'lspconfig'.hls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
 }
+
+require'lspconfig'.golangci_lint_ls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+require'lspconfig'.gopls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
