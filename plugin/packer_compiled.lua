@@ -79,6 +79,12 @@ _G.packer_plugins = {
     path = "/Users/magnus/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["auto-save.nvim"] = {
+    config = { "\27LJ\2\n³\1\0\1\t\0\b\1\0246\1\0\0009\1\1\0016\2\2\0'\4\3\0B\2\2\0029\3\4\1\18\5\0\0'\6\5\0B\3\3\2\t\3\0\0X\3\v€9\3\6\0029\5\4\1\18\a\0\0'\b\a\0B\5\3\0024\6\0\0B\3\3\2\15\0\3\0X\4\2€+\3\2\0L\3\2\0+\3\1\0L\3\2\0\14&filetype\vnot_in\16&modifiable\14getbufvar\25auto-save.utils.data\frequire\afn\bvim\2u\1\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0023\3\6\0=\3\a\2B\0\2\1K\0\1\0\14condition\0\19trigger_events\1\0\0\1\2\0\0\rBufLeave\nsetup\14auto-save\frequire\0" },
+    loaded = true,
+    path = "/Users/magnus/.local/share/nvim/site/pack/packer/start/auto-save.nvim",
+    url = "https://github.com/Pocco81/auto-save.nvim"
+  },
   catppuccin = {
     loaded = true,
     path = "/Users/magnus/.local/share/nvim/site/pack/packer/start/catppuccin",
@@ -183,6 +189,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: auto-save.nvim
+time([[Config for auto-save.nvim]], true)
+try_loadstring("\27LJ\2\n³\1\0\1\t\0\b\1\0246\1\0\0009\1\1\0016\2\2\0'\4\3\0B\2\2\0029\3\4\1\18\5\0\0'\6\5\0B\3\3\2\t\3\0\0X\3\v€9\3\6\0029\5\4\1\18\a\0\0'\b\a\0B\5\3\0024\6\0\0B\3\3\2\15\0\3\0X\4\2€+\3\2\0L\3\2\0+\3\1\0L\3\2\0\14&filetype\vnot_in\16&modifiable\14getbufvar\25auto-save.utils.data\frequire\afn\bvim\2u\1\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0023\3\6\0=\3\a\2B\0\2\1K\0\1\0\14condition\0\19trigger_events\1\0\0\1\2\0\0\rBufLeave\nsetup\14auto-save\frequire\0", "config", "auto-save.nvim")
+time([[Config for auto-save.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")

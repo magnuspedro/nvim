@@ -13,8 +13,7 @@ return require('packer').startup(function()
     use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' }, file_ignore_patterns = {
         "node_modules", "target" } }
     use 'udalov/kotlin-vim'
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.x', requires = { { 'nvim-lua/plenary.nvim' } } }
     use 'mfussenegger/nvim-jdtls'
     use 'terrortylor/nvim-comment'
     use 'mfussenegger/nvim-dap'
@@ -23,4 +22,26 @@ return require('packer').startup(function()
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+    use({
+        "Pocco81/auto-save.nvim",
+        config = function()
+            require("auto-save").setup {
+                trigger_events = { "BufLeave" }, -- vim events that trigger auto-save. See :h events
+                -- function that determines whether to save the current buffer or not
+                -- return true: if buffer is ok to be saved
+                -- return false: if it's not ok to be saved
+                condition = function(buf)
+                    local fn = vim.fn
+                    local utils = require("auto-save.utils.data")
+
+                    if
+                        fn.getbufvar(buf, "&modifiable") == 1 and
+                        utils.not_in(fn.getbufvar(buf, "&filetype"), {}) then
+                        return true -- met condition(s), can save
+                    end
+                    return false    -- can't save
+                end,
+            }
+        end,
+    })
 end)
