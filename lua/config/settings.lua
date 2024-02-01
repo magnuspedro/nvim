@@ -1,7 +1,6 @@
 local g = vim.g
 local o = vim.o
 local set = vim.opt
-local api = vim.api
 
 -- Disables Mouse
 vim.opt.mouse = ""
@@ -21,9 +20,7 @@ g.maplocalleader = ' '
 
 -- Better editing experience
 o.expandtab = true
--- o.smarttab = true
 o.cindent = true
--- o.autoindent = true
 o.wrap = true
 o.textwidth = 300
 o.tabstop = 4
