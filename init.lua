@@ -1,6 +1,7 @@
 require('config.settings')
 require('config.keybinds')
 require('config.plugins')
+require('config.catppuccin')
 require('config.lsp')
 require('config.tree')
 require('config.telescope')

@@ -18,11 +18,6 @@ o.relativenumber = true
 g.mapleader = ' '
 g.maplocalleader = ' '
 
--- Config gruvbox
---vim.o.background = "dark" -- or "light" for light mode
---vim.cmd([[colorscheme gruvbox]])
-
-vim.cmd.colorscheme "catppuccin"
 
 -- Better editing experience
 o.expandtab = true
@@ -38,15 +33,3 @@ o.list = true
 
 -- Auto save buffer
 set.autowriteall = true
-
--- Make background transparent
-
-api.nvim_set_hl(0, 'Normal', {ctermbg=nil, guibg=nil})
-api.nvim_set_hl(0, 'LineNr', {ctermbg=nil, guibg=nil})
-api.nvim_set_hl(0, 'Folder', {ctermbg=nil, guibg=nil})
-api.nvim_set_hl(0, 'NonText', {ctermbg=nil, guibg=nil})
-api.nvim_set_hl(0, 'SpecialKey', {ctermbg=nil, guibg=nil})
-api.nvim_set_hl(0, 'VertSplit', {ctermbg=nil, guibg=nil})
-api.nvim_set_hl(0, 'SignColumn', {ctermbg=nil, guibg=nil})
-api.nvim_set_hl(0, 'EndOfBuffer', {ctermbg=nil, guibg=nil})
-
