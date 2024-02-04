@@ -1,3 +1,4 @@
+require('config.lazyvim')
 require('config.settings')
 require('config.keybinds')
 require('config.plugins')

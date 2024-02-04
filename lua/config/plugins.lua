@@ -1,44 +1,55 @@
-return require('packer').startup(function()
-    use { "ellisonleao/gruvbox.nvim" }
-    use { "catppuccin/nvim", as = "catppuccin" }
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/mason.nvim'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'L3MON4D3/LuaSnip'
-    use { 'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' }, file_ignore_patterns = {
-        "node_modules", "target" } }
-    use 'udalov/kotlin-vim'
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.x', requires = { { 'nvim-lua/plenary.nvim' } } }
-    use 'mfussenegger/nvim-jdtls'
-    use 'terrortylor/nvim-comment'
-    use 'mfussenegger/nvim-dap'
-    use 'alexghergh/nvim-tmux-navigation'
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
-    use({
-        "Pocco81/auto-save.nvim",
-        config = function()
-            require("auto-save").setup {
-                trigger_events = { "BufLeave" },
-                condition = function(buf)
-                    local fn = vim.fn
-                    local utils = require("auto-save.utils.data")
-
-                    if
-                        fn.getbufvar(buf, "&modifiable") == 1 and
-                        utils.not_in(fn.getbufvar(buf, "&filetype"), {}) then
-                        return true
-                    end
-                    return false
-                end,
+local opts = {}
+local plugins = {
+    -- Catppuccin Theme
+    { 'catppuccin/nvim',        name = 'catppuccin', priority = 1000 },
+    -- Telescope search
+    {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.5',
+        dependencies = {
+            'nvim-lua/plenary.nvim' }
+    },
+    -- Toggle comment
+    { 'terrortylor/nvim-comment' },
+    -- Navigation with Tmux
+    { 'alexghergh/nvim-tmux-navigation' },
+    -- Auto close pairs
+    { 'windwp/nvim-autopairs',          event = 'InsertEnter', opts = {} },
+    -- LSP
+    { 'neovim/nvim-lspconfig' },
+    -- Mason to install languages servers
+    { 'williamboman/mason.nvim' },
+    -- LSP config for Java
+    {
+        'nvim-java/nvim-java',
+        dependencies = {
+            'nvim-java/lua-async-await',
+            'nvim-java/nvim-java-core',
+            'nvim-java/nvim-java-test',
+            'nvim-java/nvim-java-dap',
+            'MunifTanjim/nui.nvim',
+            'neovim/nvim-lspconfig',
+            'mfussenegger/nvim-dap',
+            {
+                'williamboman/mason.nvim',
+                opts = {
+                    registries = {
+                        'github:nvim-java/mason-registry',
+                        'github:mason-org/mason-registry',
+                    },
+                },
             }
-        end,
-    })
-end)
+        },
+    },
+    -- Completition Config
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = { 'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp' }
+    },
+}
+
+
+require('lazy').setup(plugins, opts)
