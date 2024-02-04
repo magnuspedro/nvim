@@ -1,7 +1,7 @@
 local opts = {}
 local plugins = {
     -- Catppuccin Theme
-    { 'catppuccin/nvim',        name = 'catppuccin', priority = 1000 },
+    { 'catppuccin/nvim',                name = 'catppuccin',   priority = 1000 },
     -- Telescope search
     {
         'nvim-telescope/telescope.nvim',
@@ -15,8 +15,26 @@ local plugins = {
     { 'alexghergh/nvim-tmux-navigation' },
     -- Auto close pairs
     { 'windwp/nvim-autopairs',          event = 'InsertEnter', opts = {} },
+    -- Tree
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+    },
     -- LSP
-    { 'neovim/nvim-lspconfig' },
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = { 'L3MON4D3/LuaSnip',
+            'hrsh7th/nvim-cmp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp'
+        }
+    },
     -- Mason to install languages servers
     { 'williamboman/mason.nvim' },
     -- LSP config for Java
@@ -30,6 +48,7 @@ local plugins = {
             'MunifTanjim/nui.nvim',
             'neovim/nvim-lspconfig',
             'mfussenegger/nvim-dap',
+            'rcarriga/nvim-dap-ui',
             {
                 'williamboman/mason.nvim',
                 opts = {
@@ -41,14 +60,21 @@ local plugins = {
             }
         },
     },
-    -- Completition Config
+    -- treesitter
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    -- Copillot
     {
-        'hrsh7th/nvim-cmp',
-        dependencies = { 'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-nvim-lsp' }
-    },
+        "jellydn/CopilotChat.nvim",
+        dependencies = { "zbirenbaum/copilot.lua" }, -- Or { "github/copilot.vim" }
+        opts = {
+            show_help = "yes",                       -- Show help text for CopilotChatInPlace, default: yes
+            debug = false,                           -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
+        },
+        build = function()
+            vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
+        end,
+        event = "VeryLazy",
+    }
 }
 
 
