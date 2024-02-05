@@ -74,7 +74,9 @@ local plugins = {
             vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
         end,
         event = "VeryLazy",
-    }
+    },
+    -- Better Quick Fix Window
+    { 'kevinhwang91/nvim-bqf' }
 }
 
 
