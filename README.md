@@ -7,12 +7,12 @@ To use live buffer please install [ripgrep](https://github.com/BurntSushi/ripgre
 
 Archlinux:
 ```shell
-# pacman -S ripgrep
+sudo pacman -S ripgrep
 ```
 
 Mac:
 ```shell
-$ brew install ripgrep
+brew install ripgrep
 ```
 
 ### Fuzzy Finder
@@ -21,12 +21,12 @@ To make nvim-bqf work we need to install fzf
 
 Archlinux:
 ```shell
-# pacman -S fzf
+sudo pacman -S fzf
 ```
 
 Mac:
 ```shell
-$ brew install fzf
+brew install fzf
 ```
 
 ### Copilot Chat
@@ -162,4 +162,5 @@ pip install tiktoken
 | `<leader>cct` | Copilot chat create test |
 | `<leader>ccv` | Copilot chat visual* |
 | `<leader>ccx` | Copilot chat inplace* |
+
  **\*** Only on visual mode
