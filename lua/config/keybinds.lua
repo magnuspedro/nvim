@@ -17,6 +17,7 @@ map('n', 'Y', 'y$')
 -- Delete without save
 map('n', '<leader>d', '"_d')
 map('n', '<leader>x', '"_x')
+map('n', '<leader>p', '"_dP')
 
 -- Add ; and . at end of file
 map('n', '<leader>;', 'A;<Esc>')
