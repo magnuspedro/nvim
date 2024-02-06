@@ -13,5 +13,7 @@ map("n", "<F10>", "<CMD>lua require'dap'.run_last()<CR>")
 map("n", "<leader>dr", "<CMD>lua require'dap'.repl.open()<CR>")
 
 -- Testing
-map("n", "<leader>tm", "<CMD>lua require'jdtls'.test_nearest_method()<CR>")
-map("n", "<leader>tc", "<CMD>lua require'jdtls'.test_class()<CR>")
+map("n", "<leader>tm", "<CMD>lua require'java'.test.debug_current_method()<CR>")
+map("n", "<leader>tc", "<CMD>lua require'java'.test.debug_current_class()<CR>")
+map("n", "<leader>tv", "<CMD>lua require'java'.test.view_last_report()<CR>")
+map("n", "<leader>lj", "<CMD>lua require'java'.dap.config_dap()<CR>")

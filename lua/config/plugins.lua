@@ -24,7 +24,9 @@ local plugins = {
             "nvim-tree/nvim-web-devicons",
         },
     },
-    -- LSP
+    -- Mason to install languages servers
+    { 'williamboman/mason.nvim' },
+  -- LSP
     {
         'neovim/nvim-lspconfig',
         dependencies = { 'L3MON4D3/LuaSnip',
@@ -35,8 +37,6 @@ local plugins = {
             'hrsh7th/cmp-nvim-lsp'
         }
     },
-    -- Mason to install languages servers
-    { 'williamboman/mason.nvim' },
     -- LSP config for Java
     {
         'nvim-java/nvim-java',
@@ -65,7 +65,7 @@ local plugins = {
     -- Copillot
     {
         "jellydn/CopilotChat.nvim",
-        dependencies = { "github/copilot.vim" }, -- Or { "github/copilot.vim" }
+        dependencies = { "zbirenbaum/copilot.lua" }, -- Or { "github/copilot.vim" }
         opts = {
             show_help = "yes",                       -- Show help text for CopilotChatInPlace, default: yes
             debug = false,                           -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
