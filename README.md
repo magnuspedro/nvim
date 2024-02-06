@@ -40,7 +40,6 @@ pip install tiktoken
 
 # Shortcuts
 
-
 ## Main
 | **Command** |    **Description**     |
 |:-----------:|:----------------------:|
@@ -74,7 +73,7 @@ pip install tiktoken
 | `<space>wl` |         List Workspace folders         |
 | `<space>D`  |      Go to definition of the type      |
 | `<space>rn` |            Refactor rename             |
-|  `<A-CR>`   |              Code Action               |
+|  `<space>ca`   |              Code Action               |
 | `<space>f`            | Format file                                       |
 ## Telescope
 | **Command** | **Description** |
@@ -162,5 +161,6 @@ pip install tiktoken
 | `<leader>cct` | Copilot chat create test |
 | `<leader>ccv` | Copilot chat visual* |
 | `<leader>ccx` | Copilot chat inplace* |
+| `<leader>cca` | Accept change |
 
  **\*** Only on visual mode
