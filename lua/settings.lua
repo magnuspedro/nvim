@@ -6,14 +6,29 @@ vim.o.shiftwidth = 4
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.clipboard = "unnamedplus"
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Better window navegation
 vim.keymap.set("n", "<c-h>", "<c-w>h", { silent = true })
 vim.keymap.set("n", "<c-j>", "<c-w>j", { silent = true })
 vim.keymap.set("n", "<c-k>", "<c-k>k", { silent = true })
 vim.keymap.set("n", "<c-l>", "<c-w>l", { silent = true })
+
+-- Got to previus insert
+vim.keymap.set("n", "<leader>.", "`.")
+
+-- Copy the rest of line
+vim.keymap.set("n", "Y", "y$")
+
+-- Delete without save
+vim.keymap.set("n", "<leader>d", '"_d')
+vim.keymap.set("n", "<leader>x", '"_x')
+vim.keymap.set("n", "<leader>p", '"_dP')
+
+-- Add ; and . at end of file
+vim.keymap.set("n", "<leader>;", "A;<Esc>")
+vim.keymap.set("n", "<leader>,", "A,<Esc>")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
