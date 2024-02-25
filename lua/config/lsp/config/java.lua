@@ -1,3 +1,0 @@
-require('java').setup()
-
-
