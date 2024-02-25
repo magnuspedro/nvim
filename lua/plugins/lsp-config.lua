@@ -1,25 +1,33 @@
 return {
 	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-	{
 		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			opts = {
+				registries = {
+					"github:nvim-java/mason-registry",
+					"github:mason-org/mason-registry",
+				},
+			},
+		},
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
+					"jdtls",
+					"java_debug_adaptor",
+					"java_test",
 					"tsserver",
 					"pyright",
+					"hls",
+					"terraformls",
 					"kotlin_language_server",
-					"jdtls",
 					"gopls",
 				},
 			})
 		end,
 	},
+	{ "mfussenegger/nvim-jdtls" },
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -39,9 +47,6 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.terraformls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.jdtls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.kotlin_language_server.setup({

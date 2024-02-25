@@ -44,4 +44,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.cmd("autocmd BufLeave,FocusLost * silent! wall")
 
-require("lazy").setup("plugins")
+require("lazy").setup({
+	spec = {
+		{ import = "plugins" },
+	},
+})
