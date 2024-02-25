@@ -5,6 +5,19 @@ local workspace_dir = home .. "/.workspaces/" .. project_name
 local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
+local getOs = function()
+    local os = vim.loop.os_uname().sysname
+    if os == "Linux" then
+        return "config_linux/"
+    elseif os == "Darwin" then
+        return "config_mac_arm/"
+    elseif os == "Windows" then
+        return "config_win/"
+    end
+end
+
+
+
 local bundles = {}
 
 vim.list_extend(
@@ -41,7 +54,7 @@ local config = {
         home
         .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar",
         "-configuration",
-        home .. "/.local/share/nvim/mason/packages/jdtls/config_mac_arm/",
+        home .. "/.local/share/nvim/mason/packages/jdtls/"..getOs(),
         "-data",
         workspace_dir,
     },
