@@ -15,8 +15,6 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"jdtls",
-					"java_debug_adaptor",
-					"java_test",
 					"tsserver",
 					"pyright",
 					"hls",
