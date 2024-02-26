@@ -146,17 +146,19 @@ pip install tiktoken
 |       `y`       |         Copy Name         |
 
 ## Debugger
-| **Command**  |   **Description**   |
-|:------------:|:-------------------:|
-| `<leader>tb` | Toggle Break Point  |
-| `<leader>dl` |      Open menu      |
-| `<leader>tm` | Test nearest method |
-| `<leader>tc` |     Test class      |
-|     `F5`     |     Run project     |
-|     `F7`     |      Step into      |
-|     `F8`     |      Step over      |
-|     `F9`     |      Step out       |
-|    `F10`     |      Run last       |
+|  **Command**  |   **Description**   |
+|:-------------:|:-------------------:|
+| `<leader>tb`  | Toggle Break Point  |
+| `<leader>dl`  |      Open menu      |
+| `<leader>tm`  | Test nearest method |
+| `<leader>tc`  |     Test class      |
+| `<leader>gt`  |   Generate test**   | 
+| `<leader>gts` |   Goto Subject**    |
+|     `F5`      |     Run project     |
+|     `F7`      |      Step into      |
+|     `F8`      |      Step over      |
+|     `F9`      |      Step out       |
+|     `F10`     |      Run last       |
 ## Copilot Chat
 |  **Command**  |     **Description**      |
 |:-------------:|:------------------------:|
