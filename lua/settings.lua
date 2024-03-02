@@ -1,8 +1,8 @@
 vim.opt.mouse = ""
 vim.o.expandtab = true
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.clipboard = "unnamedplus"
@@ -30,22 +30,26 @@ vim.keymap.set("n", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>;", "A;<Esc>")
 vim.keymap.set("n", "<leader>,", "A,<Esc>")
 
+vim.keymap.set({ "n", "v" }, "<leader>q", ":bp!<bar>sp!<bar>bn!<bar>bd!<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>n", ":bnext<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>p", ":bprev<CR>")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 vim.cmd("autocmd BufLeave,FocusLost * silent! wall")
 
 require("lazy").setup({
-	spec = {
-		{ import = "plugins" },
-	},
+  spec = {
+    { import = "plugins" },
+  },
 })

@@ -153,8 +153,8 @@ vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 vim.cmd("command! -buffer JdtJol lua require('jdtls').jol()")
 vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 
-vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua require'jdtls'.test_nearest_method()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua require'jdtls'.test_class()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua require'jdtls'.compile('full') require'jdtls'.test_nearest_method()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua require'jdtls'.compile('full') require'jdtls'.test_class()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>jc", "<cmd>lua require'jdtls'.compile('full')<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gt", "<cmd>lua require'jdtls.tests'.generate()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gts", "<cmd>lua require'jdtls.tests'.goto_subjects()<cr>", { noremap = true })

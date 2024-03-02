@@ -6,6 +6,7 @@ return {
 		none_ls.setup({
 			sources = {
 				none_ls.builtins.formatting.stylua,
+				none_ls.builtins.formatting.google_java_format,
 			},
 		})
 	end,
