@@ -42,10 +42,10 @@ pip install tiktoken
 
 ## Main
 | **Command** |                    **Description**                     |
-|:-----------:|:------------------------------------------------------:|
+| :---------: | :----------------------------------------------------: |
 |    `gcc`    |       Toggle current line using linewise comment       |
 |    `gbc`    |    Toggle the current line using blockwise comment     |
-|    `gc`     | Toggles all the selected lines using linewise comment  | 
+|    `gc`     | Toggles all the selected lines using linewise comment  |
 |    `gb`     | Toggles all the selected lines using blockwise comment |
 |   `<c-h>`   |                   Move to left pane                    |
 |   `<c-j>`   |                   Move to down pane                    |
@@ -58,6 +58,8 @@ pip install tiktoken
 | `<leader>x` |                  Delete without copy                   |
 | `<leader>;` |                 Add `;` to end of line                 |
 | `<leader>,` |                 Add `,`to end of line                  |
+| `<leader>n` |                     Go next buffer                     |
+| `<leader>p` |                   Go previous buffer                   |
 ## Lsp
 | **Command** |            **Description**             |
 |:-----------:|:--------------------------------------:|
@@ -86,74 +88,75 @@ pip install tiktoken
 | `<leader>fb` | Show Open Buffers |
 | `<leader>fh` |  Show Help Tags   |
 ## Tree Lua
-|   **Command**   |      **Description**      |
-|:---------------:|:-------------------------:|
-|  `<c-Bslash>`   |      Toggle Tree Lua      |
-| `<leader>t`<br> |   Show file on Tree Lua   |
-|     `<C-]>`     |            CD             |
-|    ` <C-E>`     |      Open: In Place       |
-|     `<C-K>`     |           Info            |
-|     `<C-R>`     |   Rename: Omit Filename   |
-|     `<C-T>`     |       Open: New Tab       |
-|     `<C-V>`     |   Open: Vertical Split    |
-|     `<C-X>`     |  Open: Horizontal Split   |
-|     `<BS>`      |      Close Directory      |
-|     `<CR>`      |           Open            |
-|     `<Tab>`     |       Open Preview        |
-|       `.`       |        Run Command        |
-|       `-`       |            Up             |
-|       `>`       |       Next Sibling        |
-|       `<`       |     Previous Sibling      |
-|       `B`       | Toggle Filter: No Buffer  |
-|       `C`       | Toggle Filter: Git Clean  |
-|       `D`       |           Trash           |
-|       `E`       |        Expand All         |
-|       `F`       |    Live Filter: Clear     |
-|       `H`       |  Toggle Filter: Dotfiles  |
-|       `I`       | Toggle Filter: Git Ignore |
-|       `J`       |       Last Sibling        |
-|       `K`       |       First Sibling       |
-|       `M`       | Toggle Filter: No Bookmar |
-|       `O`       |  Open: No Window Picker   |
-|       `P`       |     Parent Directory      |
-|       `R`       |          Refresh          |
-|       `S`       |          Search           |
-|       `U`       |   Toggle Filter: Hidden   |
-|       `W`       |         Collapse          |
-|       `Y`       |    Copy Relative Path     |
-|       `a`       | Create File Or Directory  |
-|      `bd`       |     Delete Bookmarked     |
-|      `bmv`      |      Move Bookmarked      |
-|      `bt`       |     Trash Bookmarked      |
-|      `[c`       |         Prev Git          |
-|       `c`       |           Copy            |
-|      `]c`       |         Next Git          |
-|       `d`       |          Delete           |
-|      `[e`       |      Prev Diagnostic      |
-|      `]e`       |      Next Diagnostic      |
-|       `e`       |     Rename: Basename      |
-|       `f`       |    Live Filter: Start     |
-|      `g?`       |           Help            |
-|      `gy`       |    Copy Absolute Path     |
-|       `m`       |      Toggle Bookmark      |
-|       `o`       |           Open            |
-|       `p`       |           Paste           |
-|       `q`       |           Close           |
-|       `r`       |          Rename           |
-|       `s`       |        Run System         |
-|       `u`       |     Rename: Full Path     |
-|       `x`       |            Cut            |
-|       `y`       |         Copy Name         |
+| **Command**  |      **Description**      |
+|:------------:|:-------------------------:|
+| `<c-Bslash>` |      Toggle Tree Lua      |
+| `<leader>t`  |   Show file on Tree Lua   |
+|   `<C-]>`    |            CD             |
+|   ` <C-E>`   |      Open: In Place       |
+|   `<C-K>`    |           Info            |
+|   `<C-R>`    |   Rename: Omit Filename   |
+|   `<C-T>`    |       Open: New Tab       |
+|   `<C-V>`    |   Open: Vertical Split    |
+|   `<C-X>`    |  Open: Horizontal Split   |
+|    `<BS>`    |      Close Directory      |
+|    `<CR>`    |           Open            |
+|   `<Tab>`    |       Open Preview        |
+|     `.`      |        Run Command        |
+|     `-`      |            Up             |
+|     `>`      |       Next Sibling        |
+|     `<`      |     Previous Sibling      |
+|     `B`      | Toggle Filter: No Buffer  |
+|     `C`      | Toggle Filter: Git Clean  |
+|     `D`      |           Trash           |
+|     `E`      |        Expand All         |
+|     `F`      |    Live Filter: Clear     |
+|     `H`      |  Toggle Filter: Dotfiles  |
+|     `I`      | Toggle Filter: Git Ignore |
+|     `J`      |       Last Sibling        |
+|     `K`      |       First Sibling       |
+|     `M`      | Toggle Filter: No Bookmar |
+|     `O`      |  Open: No Window Picker   |
+|     `P`      |     Parent Directory      |
+|     `R`      |          Refresh          |
+|     `S`      |          Search           |
+|     `U`      |   Toggle Filter: Hidden   |
+|     `W`      |         Collapse          |
+|     `Y`      |    Copy Relative Path     |
+|     `a`      | Create File Or Directory  |
+|     `bd`     |     Delete Bookmarked     |
+|    `bmv`     |      Move Bookmarked      |
+|     `bt`     |     Trash Bookmarked      |
+|     `[c`     |         Prev Git          |
+|     `c`      |           Copy            |
+|     `]c`     |         Next Git          |
+|     `d`      |          Delete           |
+|     `[e`     |      Prev Diagnostic      |
+|     `]e`     |      Next Diagnostic      |
+|     `e`      |     Rename: Basename      |
+|     `f`      |    Live Filter: Start     |
+|     `g?`     |           Help            |
+|     `gy`     |    Copy Absolute Path     |
+|     `m`      |      Toggle Bookmark      |
+|     `o`      |           Open            |
+|     `p`      |           Paste           |
+|     `q`      |           Close           |
+|     `r`      |          Rename           |
+|     `s`      |        Run System         |
+|     `u`      |     Rename: Full Path     |
+|     `x`      |            Cut            |
+|     `y`      |         Copy Name         |
 
 ## Debugger
 |  **Command**  |   **Description**   |
-|:-------------:|:-------------------:|
+| :-----------: | :-----------------: |
 | `<leader>tb`  | Toggle Break Point  |
 | `<leader>dl`  |      Open menu      |
 | `<leader>tm`  | Test nearest method |
 | `<leader>tc`  |     Test class      |
-| `<leader>gt`  |   Generate test**   | 
+| `<leader>gt`  |   Generate test**   |
 | `<leader>gts` |   Goto Subject**    |
+| `<leader>bc`  |     Close DapUi     |
 |     `F5`      |     Run project     |
 |     `F7`      |      Step into      |
 |     `F8`      |      Step over      |
