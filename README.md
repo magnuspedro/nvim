@@ -86,9 +86,9 @@ pip install tiktoken
 ## Telescope
 | **Command**  |  **Description**  |
 |:------------:|:-----------------:|
-|   `<c-p>`    |     Find File     |
-|   `<c-f>`    |     Live Grep     |
-| `<leader>fb` | Show Open Buffers |
+| `<leader>ff` |     Find File     |
+| `<leader>gf` |     Live Grep     |
+|    `<C-p>`   |   Find Files Vim  |
 | `<leader>fh` |  Show Help Tags   |
 ## Tree Lua
 | **Command**  |      **Description**      |
@@ -172,10 +172,22 @@ pip install tiktoken
 | `<leader>ccq` |   Copilot quick chats    |
 | `<leader>cch` |   Copilot help actions   |
 
+## Harpoon
+| **Command**  |      **Description**       |
+|:------------:|:--------------------------:|
+| `<leader>a`  |        Add to list         |
+| `<leader>ha` |  Go to first in the list   | 
+| `<leader>hs` |  Go to second in the list  |
+| `<leader>hd` |  Go to third in the list   |
+| `<leader>hf` |  Go to fourth in the list  |
+| `<leader>hp` | Go to previous in the list |
+| `<leader>hn` |   Go to next in the list   |
+|   `<C-e>`    |     Toggle Harpoon UI      |
+
 ## Better Quick Fix
 | Function    | Action                                                     | Def Key   |
 | ----------- | ---------------------------------------------------------- | --------- |
-| open        | open the item under the cursor                             | `<CR>`    |
+| open        | open the item under the cursor                             | `<CR>`    | 
 | openc       | open the item, and close quickfix window                   | `o`       |
 | drop        | use `drop` to open the item, and close quickfix window     | `O`       |
 | tabdrop     | use `tab drop` to open the item, and close quickfix window |           |
@@ -205,3 +217,4 @@ pip install tiktoken
 | fzffilter   | enter fzf mode                                             | `zf`      |
 
  **\*** Only on visual mode
+**\*\*** Only in Java
