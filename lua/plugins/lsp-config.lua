@@ -1,6 +1,12 @@
 return {
 
     {
+        'nvim-java/nvim-java',
+        config = function()
+            require('java').setup()
+        end,
+    },
+    {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "williamboman/mason.nvim",
@@ -26,7 +32,6 @@ return {
             })
         end,
     },
-    { "mfussenegger/nvim-jdtls" },
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -56,6 +61,9 @@ return {
                 capabilities = capabilities,
             })
             lspconfig.htmx.setup({
+                capabilities = capabilities,
+            })
+            lspconfig.jdtls.setup({
                 capabilities = capabilities,
             })
 
