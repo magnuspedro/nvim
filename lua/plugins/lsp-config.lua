@@ -1,27 +1,16 @@
 return {
-
     {
         'nvim-java/nvim-java',
-        config = function()
-            require('java').setup()
-        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "williamboman/mason.nvim",
-            opts = {
-                registries = {
-                    "github:nvim-java/mason-registry",
-                    "github:mason-org/mason-registry",
-                },
-            },
         },
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "jdtls",
                     "tsserver",
                     "pyright",
                     "hls",
@@ -35,6 +24,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
+            require('java').setup()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local builtin = require("telescope.builtin")
