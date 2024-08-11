@@ -55,6 +55,19 @@ return {
             })
             lspconfig.jdtls.setup({
                 capabilities = capabilities,
+                settings = {
+                    java = {
+                        configuration = {
+                            runtimes = {
+                                {
+                                    name = "openjdk-21",
+                                    path = "/Users/magnus/.asdf/installs/java/openjdk-21",
+                                    default = true,
+                                }
+                            }
+                        }
+                    }
+                }
             })
 
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
