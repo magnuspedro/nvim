@@ -3,7 +3,7 @@ return {
     { "github/copilot.vim" },
     {
         "CopilotC-Nvim/CopilotChat.nvim",
-        branch = "canary",
+        branch = "main",
         dependencies = {
             { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
         },

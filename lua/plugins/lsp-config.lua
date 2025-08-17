@@ -1,30 +1,25 @@
 return {
     {
-        'nvim-java/nvim-java',
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = {
-            "williamboman/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = {
+                "lua_ls",
+                "ts_ls",
+                "pyright",
+                "hls",
+                "terraformls",
+                "kotlin_language_server",
+                "gopls",
+            },
         },
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                    "ts_ls",
-                    "pyright",
-                    "hls",
-                    "terraformls",
-                    "kotlin_language_server",
-                    "gopls",
-                },
-            })
-        end,
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+        },
     },
+    { 'nvim-java/nvim-java', opts = {} },
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require('java').setup()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local builtin = require("telescope.builtin")
@@ -55,19 +50,19 @@ return {
             })
             lspconfig.jdtls.setup({
                 capabilities = capabilities,
-                settings = {
-                    java = {
-                        configuration = {
-                            runtimes = {
-                                {
-                                    name = "openjdk-21",
-                                    path = "/Users/magnus/.asdf/installs/java/openjdk-21",
-                                    default = true,
-                                }
-                            }
-                        }
-                    }
-                }
+                -- settings = {
+                --     java = {
+                --         configuration = {
+                --             runtimes = {
+                --                 {
+                --                     name = "openjdk-21",
+                --                     path = "/Users/magnus/.asdf/installs/java/openjdk-21",
+                --                     default = true,
+                --                 }
+                --             }
+                --         }
+                --     }
+                -- }
             })
 
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
