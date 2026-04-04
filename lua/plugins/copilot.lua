@@ -1,44 +1,38 @@
 return {
-
     { "github/copilot.vim" },
     {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        branch = "main",
+        "olimorris/codecompanion.nvim",
         dependencies = {
-            { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+            "nvim-lua/plenary.nvim",
         },
         opts = {
-            debug = true, -- Enable debugging
-            -- See Configuration section for rest
+            interactions = {
+                cli = {
+                    agent = "claude_code",
+                    agents = {
+                        claude_code = {
+                            cmd = "claude",
+                            args = {},
+                            description = "Claude Code CLI",
+                        },
+                        codex = {
+                            cmd = "codex",
+                            args = {},
+                            description = "OpenAI Codex CLI",
+                        },
+                    },
+                },
+            },
+            display = {
+                chat = {
+                    window = {
+                        position = "right", 
+                    }
+                }
+            },
+            opts = {
+                log_level = "DEBUG", -- or "TRACE"
+            },
         },
-        keys = {
-            {
-                "<leader>cch",
-                function()
-                    local actions = require("CopilotChat.actions")
-                    require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-                end,
-                desc = "CopilotChat - Help actions",
-            },
-            -- Show prompts actions with telescope
-            {
-                "<leader>ccp",
-                function()
-                    local actions = require("CopilotChat.actions")
-                    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-                end,
-                desc = "CopilotChat - Prompt actions",
-            },
-            {
-                "<leader>ccq",
-                function()
-                    local input = vim.fn.input("Quick Chat: ")
-                    if input ~= "" then
-                        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-                    end
-                end,
-                desc = "CopilotChat - Quick chat",
-            }
-        }
-    },
+    }
 }

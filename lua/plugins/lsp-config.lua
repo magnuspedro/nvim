@@ -21,48 +21,36 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
+
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local builtin = require("telescope.builtin")
 
-            lspconfig.lua_ls.setup({
+            vim.lsp.config("lua_ls", {
                 capabilities = capabilities,
             })
-            lspconfig.ts_ls.setup({
+            vim.lsp.config("ts_ls", {
                 capabilities = capabilities,
             })
-            lspconfig.pyright.setup({
+            vim.lsp.config("pyright", {
                 capabilities = capabilities,
             })
-            lspconfig.hls.setup({
+            vim.lsp.config("hls", {
                 capabilities = capabilities,
             })
-            lspconfig.terraformls.setup({
+            vim.lsp.config("terraformls", {
                 capabilities = capabilities,
             })
-            lspconfig.kotlin_language_server.setup({
+            vim.lsp.config("kotlin_lsp", {
                 capabilities = capabilities,
             })
-            lspconfig.gopls.setup({
+            vim.lsp.config("gopls", {
                 capabilities = capabilities,
             })
-            lspconfig.htmx.setup({
+            vim.lsp.config("htmx", {
                 capabilities = capabilities,
             })
-            lspconfig.jdtls.setup({
+            vim.lsp.config("jdtls", {
                 capabilities = capabilities,
-                -- settings = {
-                --     java = {
-                --         configuration = {
-                --             runtimes = {
-                --                 {
-                --                     name = "openjdk-21",
-                --                     path = "/Users/magnus/.asdf/installs/java/openjdk-21",
-                --                     default = true,
-                --                 }
-                --             }
-                --         }
-                --     }
-                -- }
             })
 
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
