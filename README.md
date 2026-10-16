@@ -154,10 +154,14 @@ in Trouble instead of the built-in window.
 
 ## Debugger & tests
 
+The debug view (nvim-dap-view) opens when a session starts and closes when it ends. Variable
+values are shown inline while stopped.
+
 |  **Command**   |       **Description**       |
 | :------------: | :-------------------------: |
 |  `<leader>tb`  |      Toggle breakpoint      |
-|  `<leader>bc`  |       Close debug UI        |
+|  `<leader>bv`  |  Toggle debug view  |
+|  `<leader>bc`  |  Close debug view   |
 |     `F5`       |     Start / continue        |
 |     `F7`       |         Step into           |
 |     `F8`       |         Step over           |
