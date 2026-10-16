@@ -1,13 +1,14 @@
 return {
     "nvimtools/none-ls.nvim",
-    config = function()
-        local none_ls = require("null-ls")
-
-        none_ls.setup({
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = function()
+        local builtins = require("null-ls").builtins
+        return {
             sources = {
-                none_ls.builtins.formatting.stylua,
-                none_ls.builtins.formatting.gofmt,
+                builtins.formatting.stylua,
+                builtins.formatting.gofmt,
             },
-        })
+        }
     end,
 }

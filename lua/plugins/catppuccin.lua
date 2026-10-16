@@ -1,8 +1,6 @@
+-- Not the active colorscheme; `:colorscheme catppuccin` loads it on demand
 return {
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000,
-    -- config = function()
-    --   vim.cmd.colorscheme("catppuccin")
-    -- end,
+    lazy = true,
 }

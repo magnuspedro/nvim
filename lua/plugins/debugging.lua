@@ -1,6 +1,26 @@
+-- nvim-dap is the main spec so the dap-ui listeners are registered however dap gets loaded
+-- (keys below, or nvim-java requiring it when jdtls attaches).
+local function dap(fn)
+    return function()
+        require("dap")[fn]()
+    end
+end
+
 return {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    "mfussenegger/nvim-dap",
+    dependencies = {
+        "rcarriga/nvim-dap-ui",
+        "nvim-neotest/nvim-nio",
+    },
+    keys = {
+        { "<leader>tb", dap("toggle_breakpoint"), desc = "Toggle breakpoint" },
+        { "<leader>bc", function() require("dapui").close() end, desc = "Close debug UI" },
+        { "<F5>", dap("continue"), desc = "Debug: continue" },
+        { "<F7>", dap("step_into"), desc = "Debug: step into" },
+        { "<F8>", dap("step_over"), desc = "Debug: step over" },
+        { "<F9>", dap("step_out"), desc = "Debug: step out" },
+        { "<F10>", dap("run_last"), desc = "Debug: run last" },
+    },
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
@@ -50,14 +70,5 @@ return {
         dap.listeners.before.event_exited.dapui_config = function()
             dapui.close()
         end
-
-        vim.keymap.set("n", "<Leader>b", dap.toggle_breakpoint, {})
-        vim.keymap.set("n", "<leader>tb", dap.toggle_breakpoint, {})
-        vim.keymap.set("n", "<F5>", dap.continue, {})
-        vim.keymap.set("n", "<F7>", dap.step_into, {})
-        vim.keymap.set("n", "<F8>", dap.step_over, {})
-        vim.keymap.set("n", "<F9>", dap.step_out, {})
-        vim.keymap.set("n", "<F10>", dap.run_last, {})
-        vim.keymap.set("n", "<leader>bc", dapui.close, {})
     end,
 }

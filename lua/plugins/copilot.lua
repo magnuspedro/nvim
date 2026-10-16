@@ -1,9 +1,19 @@
 return {
-    { "github/copilot.vim" },
+    {
+        "github/copilot.vim",
+        event = "InsertEnter",
+        cmd = "Copilot",
+    },
     {
         "olimorris/codecompanion.nvim",
+        cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCLI", "CodeCompanionCmd" },
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        keys = {
+            { "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "AI chat" },
+            { "<leader>cp", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "AI actions" },
         },
         opts = {
             interactions = {
@@ -26,13 +36,13 @@ return {
             display = {
                 chat = {
                     window = {
-                        position = "right", 
-                    }
-                }
+                        position = "right",
+                    },
+                },
             },
             opts = {
                 log_level = "DEBUG", -- or "TRACE"
             },
         },
-    }
+    },
 }
