@@ -24,9 +24,11 @@ sudo pacman -S neovim ripgrep fd tree-sitter-cli
 - **ripgrep / fd**: used by the Snacks picker (grep and file search).
 - **tree-sitter-cli** (0.26.1+, not from npm) and a C compiler: nvim-treesitter (`main` branch) builds parsers with them.
 - **A [Nerd Font](https://www.nerdfonts.com/)** in the terminal for icons.
+- **Kotlin**: `brew install JetBrains/utils/kotlin-lsp` (Mason's package has a broken download URL,
+  [mason-registry#17366](https://github.com/mason-org/mason-registry/issues/17366)).
 - **Java**: jdtls runs on the mise JDK at `~/.local/share/mise/installs/java/openjdk-25`. Project runtimes
   (11, 17, 21, 25) are configured in `lua/plugins/lsp-config.lua`; update the paths if your JDKs change.
-Language servers (lua_ls, ts_ls, pyright, terraformls, kotlin_lsp, gopls) are installed
+Language servers (lua_ls, ts_ls, pyright, terraformls, gopls, copilot) are installed
 automatically by Mason, as are the formatters used by conform.nvim (stylua, goimports). jdtls and
 spring-boot-tools are installed by nvim-java. Other filetypes are formatted by their language server.
 
