@@ -16,6 +16,17 @@ return {
 			"rust",
 			"kotlin",
 			"go",
+			"python",
+			"typescript",
+			"tsx",
+			"hcl",
+			"terraform",
+			"json",
+			"yaml",
+			"bash",
+			"regex", -- noice
+			"markdown", -- noice, render-markdown, codecompanion
+			"markdown_inline",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
