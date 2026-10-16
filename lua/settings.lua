@@ -14,7 +14,7 @@ vim.opt.spell = true
 -- Better window navigation
 vim.keymap.set("n", "<c-h>", "<c-w>h", { silent = true })
 vim.keymap.set("n", "<c-j>", "<c-w>j", { silent = true })
-vim.keymap.set("n", "<c-k>", "<c-k>k", { silent = true })
+vim.keymap.set("n", "<c-k>", "<c-w>k", { silent = true })
 vim.keymap.set("n", "<c-l>", "<c-w>l", { silent = true })
 
 -- Got to previus insert
@@ -26,15 +26,15 @@ vim.keymap.set("n", "Y", "y$")
 -- Delete without save
 vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("n", "<leader>x", '"_x')
-vim.keymap.set("n", "<leader>p", '"_dP')
+vim.keymap.set("v", "<leader>p", '"_dP')
 
 -- Add ; and . at end of file
 vim.keymap.set("n", "<leader>;", "A;<Esc>")
 vim.keymap.set("n", "<leader>,", "A,<Esc>")
 
 vim.keymap.set({ "n", "v" }, "<leader>q", ":bp!<bar>sp!<bar>bn!<bar>bd!<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>n", ":bnext<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>p", ":bprev<CR>")
+vim.keymap.set("n", "<leader>n", ":bnext<CR>")
+vim.keymap.set("n", "<leader>p", ":bprev<CR>")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
