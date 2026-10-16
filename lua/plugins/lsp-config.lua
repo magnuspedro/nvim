@@ -52,6 +52,14 @@ return {
                 float = { border = "rounded", source = true },
             })
 
+            vim.lsp.config("*", {
+                -- Don't let servers register file watchers: on macOS closing them blocks quitting
+                -- for 15s+ with jdtls/spring-boot. Servers still see every change made in Neovim.
+                capabilities = {
+                    workspace = { didChangeWatchedFiles = { dynamicRegistration = false } },
+                },
+            })
+
             vim.lsp.config("jdtls", {
                 settings = {
                     java = {
