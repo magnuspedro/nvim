@@ -149,6 +149,18 @@ The tree follows the current file. It refreshes when you save; press `u` after e
 `:copen`, `:lopen`, `:grep`, `:make` and anything else that fills the quickfix / location list open
 in Trouble instead of the built-in window.
 
+## Git changes (gitsigns)
+
+Changed lines are marked in the gutter like IntelliJ's change bars.
+
+|  **Command**  |          **Description**           |
+| :-----------: | :--------------------------------: |
+|  `]h` / `[h`  |     Next / previous change         |
+| `<leader>hp`  |   Preview change (inline diff)     |
+| `<leader>hr`  | Rollback change (or selected lines) |
+| `<leader>hd`  |      Diff file against index       |
+| `<leader>hb`  |            Blame line              |
+
 ## Debugger & tests
 
 The debug view (nvim-dap-view) opens when a session starts and closes when it ends. Variable
