@@ -20,7 +20,10 @@ return {
     keys = {
         { "<leader>ff", function() Snacks.picker.files() end, desc = "Find files" },
         { "<leader>gf", function() Snacks.picker.grep() end, desc = "Live grep" },
-        { "<C-p>", function() Snacks.picker.git_files() end, desc = "Git files" },
+        { "<C-p>", function() Snacks.picker.files() end, desc = "Goto file" },
+        { "<C-f>", function() Snacks.picker.grep() end, desc = "Find in path" },
+        { "<leader>s", function() Snacks.picker.buffers() end, desc = "Switcher" },
+        { "<leader>/", function() Snacks.picker.lines() end, desc = "Find in file" },
         { "z=", function() Snacks.picker.spelling() end, desc = "Spell suggest" },
         { "<leader>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     },
