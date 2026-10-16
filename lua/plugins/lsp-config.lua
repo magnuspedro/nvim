@@ -75,6 +75,8 @@ return {
 
             -- Installs servers and calls vim.lsp.enable() for every Mason-installed one
             require("mason-lspconfig").setup({
+                -- stylua is also an LSP in Mason; conform runs it as a formatter instead
+                automatic_enable = { exclude = { "stylua" } },
                 ensure_installed = {
                     "lua_ls",
                     "ts_ls",
@@ -108,7 +110,6 @@ return {
                     map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
                     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
                     map("n", "<leader>e", vim.diagnostic.open_float, "Show diagnostic")
-                    map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, "Format")
                 end,
             })
         end,
