@@ -15,7 +15,19 @@ return {
             { "mason-org/mason.nvim", opts = {} },
         },
     },
-    { 'nvim-java/nvim-java', opts = {} },
+    {
+        "nvim-java/nvim-java",
+        config = function()
+            require("java").setup({
+                -- Run jdtls on the mise JDK instead of downloading one
+                jdk = {
+                    auto_install = false,
+                    path = vim.fn.expand("~/.local/share/mise/installs/java/openjdk-25"),
+                },
+            })
+            vim.lsp.enable("jdtls")
+        end,
+    },
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -44,8 +56,22 @@ return {
             vim.lsp.config("htmx", {
                 capabilities = capabilities,
             })
+            local java_home = vim.fn.expand("~/.local/share/mise/installs/java/")
             vim.lsp.config("jdtls", {
                 capabilities = capabilities,
+                settings = {
+                    java = {
+                        configuration = {
+                            -- JDKs available to projects (picked by the project's source/target level)
+                            runtimes = {
+                                { name = "JavaSE-11", path = java_home .. "zulu-11" },
+                                { name = "JavaSE-17", path = java_home .. "zulu-javafx-17" },
+                                { name = "JavaSE-21", path = java_home .. "openjdk-21" },
+                                { name = "JavaSE-25", path = java_home .. "openjdk-25", default = true },
+                            },
+                        },
+                    },
+                },
             })
 
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
