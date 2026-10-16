@@ -26,10 +26,12 @@ sudo pacman -S neovim ripgrep fd tree-sitter-cli
 - **A [Nerd Font](https://www.nerdfonts.com/)** in the terminal for icons.
 - **Java**: jdtls runs on the mise JDK at `~/.local/share/mise/installs/java/openjdk-25`. Project runtimes
   (11, 17, 21, 25) are configured in `lua/plugins/lsp-config.lua`; update the paths if your JDKs change.
-- **stylua** (optional, `brew install stylua`): Lua formatting via none-ls.
+Language servers (lua_ls, ts_ls, pyright, terraformls, kotlin_lsp, gopls) are installed
+automatically by Mason, as are the formatters used by conform.nvim (stylua, goimports). jdtls and
+spring-boot-tools are installed by nvim-java. Other filetypes are formatted by their language server.
 
-Language servers (lua_ls, ts_ls, pyright, terraformls, kotlin_language_server, gopls) are installed
-automatically by Mason. jdtls is installed by nvim-java.
+Language servers can't register file watchers (it made quitting hang on macOS), so after big changes
+outside Neovim (git checkout, code generation) run `:lsp restart` if a server looks out of date.
 
 Press `<leader>?` to see buffer-local keymaps, or just press `<leader>` and wait: which-key lists everything.
 
@@ -184,6 +186,8 @@ in Trouble instead of the built-in window.
 |    `<C-e>`    |      Close menu            |
 | `<C-n>`/`<C-p>` |   Next / previous item   |
 | `<C-b>`/`<C-f>` |  Scroll docs up / down   |
+| `<Tab>`/`<S-Tab>` | Next / previous snippet field |
+|    `<C-k>`    |  Toggle signature help     |
 
 ## Messages (Noice) & help
 
