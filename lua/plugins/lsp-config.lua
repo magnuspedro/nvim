@@ -112,6 +112,10 @@ return {
     {
         "nvim-java/nvim-java",
         ft = "java",
+        dependencies = {
+            -- nvim-java pins this to a 2024 commit that still calls the deprecated client.request()
+            { "JavaHello/spring-boot.nvim", commit = "9880be48170a21d97444b1eba75853fd3bad33c3" },
+        },
         keys = {
             { "<leader>tm", "<cmd>JavaTestRunCurrentMethod<cr>", ft = "java", desc = "Test method" },
             { "<leader>tc", "<cmd>JavaTestRunCurrentClass<cr>", ft = "java", desc = "Test class" },
@@ -127,7 +131,8 @@ return {
                     path = java_home .. "openjdk-25",
                 },
             })
-            vim.lsp.enable("jdtls")
+            -- spring-boot.nvim no longer starts its server from setup(); nvim-java doesn't enable it yet
+            vim.lsp.enable({ "jdtls", "spring-boot" })
         end,
     },
     {
