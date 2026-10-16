@@ -6,7 +6,6 @@ return {
                 "lua_ls",
                 "ts_ls",
                 "pyright",
-                "hls",
                 "terraformls",
                 "kotlin_language_server",
                 "gopls",
@@ -31,9 +30,6 @@ return {
                 capabilities = capabilities,
             })
             vim.lsp.config("pyright", {
-                capabilities = capabilities,
-            })
-            vim.lsp.config("hls", {
                 capabilities = capabilities,
             })
             vim.lsp.config("terraformls", {
