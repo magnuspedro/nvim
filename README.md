@@ -1,220 +1,194 @@
 # Nvim Config
 
-## Instalation
+Neovim 0.12+ config built on [lazy.nvim](https://github.com/folke/lazy.nvim). Keymaps mirror the
+IdeaVim setup in `~/.ideavimrc` where possible, so muscle memory carries over from IntelliJ.
 
-### Ripgrep
-To use live buffer please install [ripgrep](https://github.com/BurntSushi/ripgrep)
-
-Archlinux:
-```shell
-sudo pacman -S ripgrep
 ```
+init.lua
+lua/config/   options, keymaps, autocmds, lazy.nvim bootstrap
+lua/plugins/  one file per plugin (or group of related plugins)
+```
+
+## Installation
 
 Mac:
 ```shell
-brew install ripgrep
+brew install neovim ripgrep fd tree-sitter-cli
 ```
-
-### Fuzzy Finder
-
-To make nvim-bqf work we need to install fzf
 
 Archlinux:
 ```shell
-sudo pacman -S fzf
+sudo pacman -S neovim ripgrep fd tree-sitter-cli
 ```
 
-Mac:
-```shell
-brew install fzf
-```
+- **ripgrep / fd**: used by the Snacks picker (grep and file search).
+- **tree-sitter-cli** (0.26.1+, not from npm) and a C compiler: nvim-treesitter (`main` branch) builds parsers with them.
+- **A [Nerd Font](https://www.nerdfonts.com/)** in the terminal for icons.
+- **Java**: jdtls runs on the mise JDK at `~/.local/share/mise/installs/java/openjdk-25`. Project runtimes
+  (11, 17, 21, 25) are configured in `lua/plugins/lsp-config.lua`; update the paths if your JDKs change.
+- **stylua** (optional, `brew install stylua`): Lua formatting via none-ls.
 
-### Copilot Chat
+Language servers (lua_ls, ts_ls, pyright, terraformls, kotlin_language_server, gopls) are installed
+automatically by Mason. jdtls is installed by nvim-java.
 
-Install dependencies for copilot. They are porting to lua, so may be its going to be deprecated
-
-```python 
-pip install python-dotenv requests pynvim==0.5.0 prompt-toolkit
-pip install tiktoken
-```
+Press `<leader>?` to see buffer-local keymaps, or just press `<leader>` and wait: which-key lists everything.
 
 # Shortcuts
 
-## Main
-| **Command** |                    **Description**                     |
-| :---------: | :----------------------------------------------------: |
-|    `gcc`    |       Toggle current line using linewise comment       |
-|    `gbc`    |    Toggle the current line using blockwise comment     |
-|    `gc`     | Toggles all the selected lines using linewise comment  |
-|    `gb`     | Toggles all the selected lines using blockwise comment |
-|   `<c-h>`   |                   Move to left pane                    |
-|   `<c-j>`   |                   Move to down pane                    |
-|   `<c-k>`   |                   Move to upper pane                   |
-|   `<c-l>`   |                   Move to right pane                   |
-| `<leader>.` |                 Go to previous insert                  |
-|     `Y`     |                   Copy rest of line                    |
-| `<leader>p` |                   Past without copy                    |
-| `<leader>d` |                  Delete without copy                   |
-| `<leader>x` |                  Delete without copy                   |
-| `<leader>;` |                 Add `;` to end of line                 |
-| `<leader>,` |                 Add `,`to end of line                  |
-| `<leader>n` |                     Go next buffer                     |
-| `<leader>p` |                   Go previous buffer                   |
-|    `gt`     |                     Go to next tab                     |
-|    `gT`     |                  Go to previous tab                    |
+`<leader>` is `Space`.
 
-## Lsp
-| **Command** |            **Description**             |
-|:-----------:|:--------------------------------------:|
-| `<leader>e` |            Open diagnostic             |
-|    `[d`     |             Go to previous             |
-|    `]d`     |               Go to next               |
-| `<leader>q` | Add buffer diagnostic to location list |
-|    `gD`     |            Go to Declarion             |
-|    `gd`     |             Show reference             | 
-|    `gr`     |            Go to Definition            |
-|     `K`     |                Explain                 |
-|    `gi`     |          Go to implementation          |
-|   `<C-K>`   |       Show signature information       |
-| `<space>wa` |          Add workspace folder          |
-| `<space>wr` |        Remove workspace folder         |
-| `<space>wl` |         List Workspace folders         |
-| `<space>D`  |      Go to definition of the type      |
-| `<space>rn` |            Refactor rename             |
-| `<space>ca` |              Code Action               |
-| `<space>f`  |              Format file               |
-## Telescope
-| **Command**  |  **Description**  |
-|:------------:|:-----------------:|
-| `<leader>ff` |     Find File     |
-| `<leader>gf` |     Live Grep     |
-|    `<C-p>`   |   Find Files Vim  |
-| `<leader>fh` |  Show Help Tags   |
-## Tree Lua
-| **Command**  |      **Description**      |
-|:------------:|:-------------------------:|
-| `<c-Bslash>` |      Toggle Tree Lua      |
-| `<leader>t`  |   Show file on Tree Lua   |
-|   `<C-]>`    |            CD             |
-|   ` <C-E>`   |      Open: In Place       |
-|   `<C-K>`    |           Info            |
-|   `<C-R>`    |   Rename: Omit Filename   |
-|   `<C-T>`    |       Open: New Tab       |
-|   `<C-V>`    |   Open: Vertical Split    |
-|   `<C-X>`    |  Open: Horizontal Split   |
-|    `<BS>`    |      Close Directory      |
-|    `<CR>`    |           Open            |
-|   `<Tab>`    |       Open Preview        |
-|     `.`      |        Run Command        |
-|     `-`      |            Up             |
-|     `>`      |       Next Sibling        |
-|     `<`      |     Previous Sibling      |
-|     `B`      | Toggle Filter: No Buffer  |
-|     `C`      | Toggle Filter: Git Clean  |
-|     `D`      |           Trash           |
-|     `E`      |        Expand All         |
-|     `F`      |    Live Filter: Clear     |
-|     `H`      |  Toggle Filter: Dotfiles  |
-|     `I`      | Toggle Filter: Git Ignore |
-|     `J`      |       Last Sibling        |
-|     `K`      |       First Sibling       |
-|     `M`      | Toggle Filter: No Bookmar |
-|     `O`      |  Open: No Window Picker   |
-|     `P`      |     Parent Directory      |
-|     `R`      |          Refresh          |
-|     `S`      |          Search           |
-|     `U`      |   Toggle Filter: Hidden   |
-|     `W`      |         Collapse          |
-|     `Y`      |    Copy Relative Path     |
-|     `a`      | Create File Or Directory  |
-|     `bd`     |     Delete Bookmarked     |
-|    `bmv`     |      Move Bookmarked      |
-|     `bt`     |     Trash Bookmarked      |
-|     `[c`     |         Prev Git          |
-|     `c`      |           Copy            |
-|     `]c`     |         Next Git          |
-|     `d`      |          Delete           |
-|     `[e`     |      Prev Diagnostic      |
-|     `]e`     |      Next Diagnostic      |
-|     `e`      |     Rename: Basename      |
-|     `f`      |    Live Filter: Start     |
-|     `g?`     |           Help            |
-|     `gy`     |    Copy Absolute Path     |
-|     `m`      |      Toggle Bookmark      |
-|     `o`      |           Open            |
-|     `p`      |           Paste           |
-|     `q`      |           Close           |
-|     `r`      |          Rename           |
-|     `s`      |        Run System         |
-|     `u`      |     Rename: Full Path     |
-|     `x`      |            Cut            |
-|     `y`      |         Copy Name         |
+## Editing
 
-## Debugger
-|  **Command**  |   **Description**   |
-| :-----------: | :-----------------: |
-| `<leader>tb`  | Toggle Break Point  |
-| `<leader>dl`  |      Open menu      |
-| `<leader>tm`  | Test nearest method |
-| `<leader>tc`  |     Test class      |
-| `<leader>gt`  |   Generate test**   |
-| `<leader>gts` |   Goto Subject**    |
-| `<leader>bc`  |     Close DapUi     |
-|     `F5`      |     Run project     |
-|     `F7`      |      Step into      |
-|     `F8`      |      Step over      |
-|     `F9`      |      Step out       |
-|     `F10`     |      Run last       |
-## Copilot Chat
-|  **Command**  |     **Description**      |
-|:-------------:|:------------------------:|
-| `<leader>ccp` |      Prompt Actions      |
-| `<leader>ccq` |   Copilot quick chats    |
-| `<leader>cch` |   Copilot help actions   |
+|  **Command**  |           **Description**            |
+| :-----------: | :----------------------------------: |
+|     `gcc`     |     Toggle line comment (linewise)    |
+|     `gbc`     |     Toggle line comment (blockwise)   |
+|     `gc`      |   Toggle comment on selection/motion  |
+|     `gb`      | Toggle block comment on selection/motion |
+|      `Y`      |           Yank to end of line         |
+|  `<leader>.`  |         Go to last change             |
+|  `<leader>d`  |       Delete without yank (motion)    |
+|  `<leader>x`  |       Delete char without yank        |
+|  `<leader>p`  |   Paste without yank (visual mode)    |
+|  `<leader>;`  |        Add `;` to end of line         |
+|  `<leader>,`  |        Add `,` to end of line         |
 
-## Harpoon
-| **Command**  |      **Description**       |
-|:------------:|:--------------------------:|
-| `<leader>a`  |        Add to list         |
-| `<leader>ha` |  Go to first in the list   | 
-| `<leader>hs` |  Go to second in the list  |
-| `<leader>hd` |  Go to third in the list   |
-| `<leader>hf` |  Go to fourth in the list  |
-| `<leader>hp` | Go to previous in the list |
-| `<leader>hn` |   Go to next in the list   |
-|   `<C-e>`    |     Toggle Harpoon UI      |
+## Windows & buffers
 
-## Better Quick Fix
-| Function    | Action                                                     | Def Key   |
-| ----------- | ---------------------------------------------------------- | --------- |
-| open        | open the item under the cursor                             | `<CR>`    | 
-| openc       | open the item, and close quickfix window                   | `o`       |
-| drop        | use `drop` to open the item, and close quickfix window     | `O`       |
-| tabdrop     | use `tab drop` to open the item, and close quickfix window |           |
-| tab         | open the item in a new tab                                 | `t`       |
-| tabb        | open the item in a new tab, but stay in quickfix window    | `T`       |
-| tabc        | open the item in a new tab, and close quickfix window      | `<C-t>`   |
-| split       | open the item in horizontal split                          | `<C-x>`   |
-| vsplit      | open the item in vertical split                            | `<C-v>`   |
-| prevfile    | go to previous file under the cursor in quickfix window    | `<C-p>`   |
-| nextfile    | go to next file under the cursor in quickfix window        | `<C-n>`   |
-| prevhist    | cycle to previous quickfix list in quickfix window         | `<`       |
-| nexthist    | cycle to next quickfix list in quickfix window             | `>`       |
-| lastleave   | go to last selected item in quickfix window                | `'"`      |
-| stoggleup   | toggle sign and move cursor up                             | `<S-Tab>` |
-| stoggledown | toggle sign and move cursor down                           | `<Tab>`   |
-| stogglevm   | toggle multiple signs in visual mode                       | `<Tab>`   |
-| stogglebuf  | toggle signs for same buffers under the cursor             | `'<Tab>`  |
-| sclear      | clear the signs in current quickfix list                   | `z<Tab>`  |
-| pscrollup   | scroll up half-page in preview window                      | `<C-b>`   |
-| pscrolldown | scroll down half-page in preview window                    | `<C-f>`   |
-| pscrollorig | scroll back to original position in preview window         | `zo`      |
-| ptogglemode | toggle preview window between normal and max size          | `zp`      |
-| ptoggleitem | toggle preview for a quickfix list item                    | `p`       |
-| ptoggleauto | toggle auto-preview when cursor moves                      | `P`       |
-| filter      | create new list for signed items                           | `zn`      |
-| filterr     | create new list for non-signed items                       | `zN`      |
-| fzffilter   | enter fzf mode                                             | `zf`      |
+|  **Command**  |      **Description**      |
+| :-----------: | :-----------------------: |
+|    `<C-h>`    |    Move to left window    |
+|    `<C-j>`    |    Move to lower window   |
+|    `<C-k>`    |    Move to upper window   |
+|    `<C-l>`    |    Move to right window   |
+|  `<leader>n`  |        Next buffer        |
+|  `<leader>p`  |      Previous buffer      |
+|  `<leader>q`  | Close buffer, keep window |
+|  `<leader>s`  | Switch buffer (IntelliJ Switcher) |
+|     `gt`      |         Next tab          |
+|     `gT`      |       Previous tab        |
 
- **\*** Only on visual mode
-**\*\*** Only in Java
+## Search (Snacks picker)
+
+|  **Command**   |              **Description**              |
+| :------------: | :---------------------------------------: |
+|    `<C-p>`     |       Go to file (IntelliJ GotoFile)      |
+|  `<leader>ff`  |                Find files                 |
+|    `<C-f>`     |  Grep in project (IntelliJ Find in Path)  |
+|  `<leader>gf`  |             Grep in project               |
+|  `<leader>/`   |           Search in current file          |
+|     `z=`       |           Spelling suggestions            |
+|  `<leader>km`  |               Search keymaps              |
+| `<a-t>` (in picker) | Send results to Trouble (IntelliJ "Open in Find Window") |
+
+## File tree (Snacks explorer)
+
+The tree follows the current file. It refreshes when you save; press `u` after external changes
+(git checkout, builds).
+
+|  **Command**   |          **Description**          |
+| :------------: | :-------------------------------: |
+|    `<C-\>`     |          Toggle file tree         |
+| `<CR>` / `l`   |         Open file / folder        |
+|      `h`       |           Close folder            |
+|     `<BS>`     |          Go up one folder         |
+|      `a`       | Add file (end with `/` for folder) |
+|      `d`       |              Delete               |
+|      `r`       |              Rename               |
+|      `c`       |               Copy                |
+|      `m`       |               Move                |
+|      `y`       |            Yank path(s)           |
+|      `p`       |               Paste               |
+|      `o`       |    Open with system application   |
+|      `P`       |          Toggle preview           |
+|      `u`       |              Refresh              |
+|      `H`       |       Toggle hidden files         |
+|      `I`       |       Toggle ignored files        |
+|      `Z`       |        Collapse all folders       |
+|      `.`       |       Focus folder as root        |
+|   `]g` / `[g`  |        Next / previous git change |
+|   `]d` / `[d`  |   Next / previous diagnostic      |
+|   `]e` / `[e`  |      Next / previous error        |
+|  `<leader>/`   |        Grep in folder             |
+|     `<C-c>`    |   Change cwd to folder (`:tcd`)   |
+
+## LSP
+
+|   **Command**   |               **Description**                |
+| :-------------: | :------------------------------------------: |
+|      `gd`       | Go to declaration; on the declaration itself, usages popup (IntelliJ Cmd+B) |
+|      `gD`       |              Go to declaration               |
+|      `gr`       |    Find usages (Trouble, IntelliJ Alt+F7)    |
+|      `gi`       | Go to implementation: jumps if one, popup if several (IntelliJ Cmd+Alt+B) |
+|       `K`       |                 Hover docs                   |
+|  `<C-s>` (insert) |            Signature help               |
+|  `<leader>gd`   |         Pick references (Snacks)             |
+|  `<leader>gi`   |       Pick implementations (Snacks)          |
+|   `<leader>D`   |           Go to type definition              |
+|  `<leader>rn`   |                  Rename                      |
+|  `<leader>ca`   |                Code action                   |
+|   `<leader>f`   |                Format file                   |
+|   `<leader>e`   |           Show line diagnostic               |
+|  `<leader>wa`   |           Add workspace folder               |
+|  `<leader>wr`   |          Remove workspace folder             |
+|  `<leader>wl`   |          List workspace folders              |
+
+## Problems & tool windows (Trouble)
+
+|  **Command**   |                     **Description**                      |
+| :------------: | :------------------------------------------------------: |
+|  `<leader>tp`  |        Problems, whole project (IntelliJ Alt+6)          |
+|  `<leader>tf`  |              Problems, current file                      |
+|  `<leader>ts`  |         Structure / symbols (IntelliJ Cmd+7)             |
+|  `<leader>ch`  |       Call hierarchy (IntelliJ Ctrl+Alt+H)               |
+|  `<leader>tq`  |                    Quickfix list                         |
+|  `<leader>tl`  |                   Location list                          |
+|   `]e` / `[e`  |    Next / previous problem (IntelliJ F2 / Shift+F2)      |
+|   `]t` / `[t`  |   Next / previous item in Trouble (or quickfix)          |
+|   `]d` / `[d`  |          Next / previous diagnostic (built-in)           |
+
+`:copen`, `:lopen`, `:grep`, `:make` and anything else that fills the quickfix / location list open
+in Trouble instead of the built-in window.
+
+## Debugger & tests
+
+|  **Command**   |       **Description**       |
+| :------------: | :-------------------------: |
+|  `<leader>tb`  |      Toggle breakpoint      |
+|  `<leader>bc`  |       Close debug UI        |
+|     `F5`       |     Start / continue        |
+|     `F7`       |         Step into           |
+|     `F8`       |         Step over           |
+|     `F9`       |          Step out           |
+|     `F10`      |          Run last           |
+|  `<leader>tm`  |   Run test method (Java)    |
+|  `<leader>tc`  |    Run test class (Java)    |
+| `<leader>tdm`  |  Debug test method (Java)   |
+| `<leader>tdc`  |   Debug test class (Java)   |
+|  `<leader>tr`  |  Last test report (Java)    |
+
+## AI (CodeCompanion / Copilot)
+
+|  **Command**  |          **Description**          |
+| :-----------: | :-------------------------------: |
+| `<leader>cc`  |         Toggle AI chat            |
+| `<leader>cp`  |        AI action palette          |
+|    `<Tab>`    | Accept Copilot suggestion (insert) |
+
+## Completion (insert mode)
+
+|  **Command**  |      **Description**       |
+| :-----------: | :------------------------: |
+| `<C-Space>`   |    Open completion menu    |
+|    `<CR>`     |     Confirm selection      |
+|    `<C-e>`    |      Close menu            |
+| `<C-n>`/`<C-p>` |   Next / previous item   |
+| `<C-b>`/`<C-f>` |  Scroll docs up / down   |
+
+## Messages (Noice) & help
+
+|  **Command**  |       **Description**       |
+| :-----------: | :-------------------------: |
+| `<leader>mh`  |      Message history        |
+| `<leader>md`  |     Dismiss messages        |
+| `<leader>?`   |    Buffer-local keymaps     |
