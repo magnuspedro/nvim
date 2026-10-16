@@ -77,7 +77,7 @@ return {
                     "ts_ls",
                     "pyright",
                     "terraformls",
-                    "kotlin_language_server",
+                    "kotlin_lsp",
                     "gopls",
                 },
             })
