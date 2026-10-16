@@ -1,7 +1,9 @@
--- Window navigation (<C-h/j/k/l>) lives in plugins/multiplexer.lua so it also moves across tmux panes
-
 local map = vim.keymap.set
 
+map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 
 map("n", "<leader>.", "`.", { desc = "Go to last change" })
 map("n", "Y", "y$", { desc = "Yank to end of line" })
