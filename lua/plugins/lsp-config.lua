@@ -1,64 +1,27 @@
+local java_home = vim.fn.expand("~/.local/share/mise/installs/java/")
+
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = {
-                "lua_ls",
-                "ts_ls",
-                "pyright",
-                "terraformls",
-                "kotlin_language_server",
-                "gopls",
-            },
-        },
+        "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             { "mason-org/mason.nvim", opts = {} },
+            "mason-org/mason-lspconfig.nvim",
+            "hrsh7th/cmp-nvim-lsp",
         },
-    },
-    {
-        "nvim-java/nvim-java",
         config = function()
-            require("java").setup({
-                -- Run jdtls on the mise JDK instead of downloading one
-                jdk = {
-                    auto_install = false,
-                    path = vim.fn.expand("~/.local/share/mise/installs/java/openjdk-25"),
-                },
+            vim.diagnostic.config({
+                virtual_text = true,
+                severity_sort = true,
+                float = { border = "rounded", source = true },
             })
-            vim.lsp.enable("jdtls")
-        end,
-    },
-    {
-        "neovim/nvim-lspconfig",
-        config = function()
-            local lspconfig = require("lspconfig")
 
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            -- Shared by every server
+            vim.lsp.config("*", {
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            })
 
-            vim.lsp.config("lua_ls", {
-                capabilities = capabilities,
-            })
-            vim.lsp.config("ts_ls", {
-                capabilities = capabilities,
-            })
-            vim.lsp.config("pyright", {
-                capabilities = capabilities,
-            })
-            vim.lsp.config("terraformls", {
-                capabilities = capabilities,
-            })
-            vim.lsp.config("kotlin_lsp", {
-                capabilities = capabilities,
-            })
-            vim.lsp.config("gopls", {
-                capabilities = capabilities,
-            })
-            vim.lsp.config("htmx", {
-                capabilities = capabilities,
-            })
-            local java_home = vim.fn.expand("~/.local/share/mise/installs/java/")
             vim.lsp.config("jdtls", {
-                capabilities = capabilities,
                 settings = {
                     java = {
                         configuration = {
@@ -74,25 +37,68 @@ return {
                 },
             })
 
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition) -- builtin.lsp_definitions)
-            vim.keymap.set("n", "<leader>gd", function() Snacks.picker.lsp_references() end)
-            vim.keymap.set("n", "<leader>gi", function() Snacks.picker.lsp_implementations() end)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover)
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help)
-            vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder)
-            vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder)
-            vim.keymap.set("n", "<space>wl", function()
-                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end)
-            vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition)
-            vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename)
-            vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action)
-            vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-            vim.keymap.set("n", "<space>f", function()
-                vim.lsp.buf.format({ async = true })
-            end)
+            -- Installs servers and calls vim.lsp.enable() for every Mason-installed one
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "lua_ls",
+                    "ts_ls",
+                    "pyright",
+                    "terraformls",
+                    "kotlin_language_server",
+                    "gopls",
+                },
+            })
+
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("user-lsp-attach", { clear = true }),
+                callback = function(ev)
+                    local map = function(mode, lhs, rhs, desc)
+                        vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
+                    end
+
+                    map("n", "gD", vim.lsp.buf.declaration, "Goto declaration")
+                    map("n", "gd", vim.lsp.buf.definition, "Goto definition")
+                    map("n", "gi", vim.lsp.buf.implementation, "Goto implementation")
+                    map("n", "<leader>gd", function() Snacks.picker.lsp_references() end, "Pick references")
+                    map("n", "<leader>gi", function() Snacks.picker.lsp_implementations() end, "Pick implementations")
+                    map("n", "K", vim.lsp.buf.hover, "Hover")
+                    map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
+                    map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Remove workspace folder")
+                    map("n", "<leader>wl", function()
+                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    end, "List workspace folders")
+                    map("n", "<leader>D", vim.lsp.buf.type_definition, "Goto type definition")
+                    map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
+                    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+                    map("n", "<leader>e", vim.diagnostic.open_float, "Show diagnostic")
+                    map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, "Format")
+                end,
+            })
         end,
+    },
+    {
+        "nvim-java/nvim-java",
+        ft = "java",
+        config = function()
+            require("java").setup({
+                -- Run jdtls on the mise JDK instead of downloading one
+                jdk = {
+                    auto_install = false,
+                    path = java_home .. "openjdk-25",
+                },
+            })
+            vim.lsp.enable("jdtls")
+        end,
+    },
+    {
+        -- Teaches lua_ls about the Neovim API and installed plugins
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                { path = "snacks.nvim", words = { "Snacks" } },
+            },
+        },
     },
 }
