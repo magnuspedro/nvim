@@ -43,18 +43,13 @@ return {
         dependencies = {
             { "mason-org/mason.nvim", opts = {} },
             "mason-org/mason-lspconfig.nvim",
-            "hrsh7th/cmp-nvim-lsp",
+            "saghen/blink.cmp", -- registers completion capabilities for every server
         },
         config = function()
             vim.diagnostic.config({
                 virtual_text = true,
                 severity_sort = true,
                 float = { border = "rounded", source = true },
-            })
-
-            -- Shared by every server
-            vim.lsp.config("*", {
-                capabilities = require("cmp_nvim_lsp").default_capabilities(),
             })
 
             vim.lsp.config("jdtls", {
