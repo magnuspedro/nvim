@@ -170,6 +170,25 @@ values are shown inline while stopped.
 | `<leader>tdc`  |   Debug test class (Java)   |
 |  `<leader>tr`  |  Last test report (Java)    |
 
+## Claude Code (claudecode.nvim)
+
+Runs the `claude` CLI in a terminal split and connects it to Neovim like the IntelliJ plugin: Claude
+sees the current selection and diagnostics, and proposed edits open as diffs. The CLI uses its own
+config, so Bedrock (`CLAUDE_CODE_USE_BEDROCK`, `AWS_PROFILE`, ...) works as in the terminal. A
+`claude` started elsewhere (e.g. a zellij pane) can attach with `/ide` once the plugin is loaded.
+
+|  **Command**  |          **Description**          |
+| :-----------: | :-------------------------------: |
+| `<leader>ac`  |          Toggle Claude            |
+| `<leader>af`  |          Focus Claude             |
+| `<leader>ar`  |     Resume a Claude session       |
+| `<leader>aC`  |    Continue last conversation     |
+| `<leader>am`  |          Select model             |
+| `<leader>ab`  |   Add current buffer to context   |
+| `<leader>as`  | Send selection (visual) / add file (explorer) |
+| `<leader>aa`  |          Accept diff              |
+| `<leader>ad`  |           Deny diff               |
+
 ## AI (CodeCompanion / Copilot)
 
 Copilot runs as a language server (`copilot-language-server`, installed by Mason) with Neovim's
