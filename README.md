@@ -75,7 +75,6 @@ Press `<leader>?` to see buffer-local keymaps, or just press `<leader>` and wait
 |  **Command**   |              **Description**              |
 | :------------: | :---------------------------------------: |
 |    `<C-p>`     |       Go to file (IntelliJ GotoFile)      |
-|  `<leader>ff`  |                Find files                 |
 |    `<C-f>`     |  Grep in project (IntelliJ Find in Path)  |
 |  `<leader>gf`  |             Grep in project               |
 |  `<leader>/`   |           Search in current file          |
