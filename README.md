@@ -43,10 +43,8 @@ Press `<leader>?` to see buffer-local keymaps, or just press `<leader>` and wait
 
 |  **Command**  |           **Description**            |
 | :-----------: | :----------------------------------: |
-|     `gcc`     |     Toggle line comment (linewise)    |
-|     `gbc`     |     Toggle line comment (blockwise)   |
-|     `gc`      |   Toggle comment on selection/motion  |
-|     `gb`      | Toggle block comment on selection/motion |
+|     `gcc`     |          Toggle line comment          |
+|     `gc`      | Toggle comment on selection / motion (e.g. `gcip`) |
 |      `Y`      |           Yank to end of line         |
 |  `<leader>.`  |         Go to last change             |
 |  `<leader>d`  |       Delete without yank (motion)    |
