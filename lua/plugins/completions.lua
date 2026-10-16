@@ -1,19 +1,25 @@
 return {
-    { "hrsh7th/cmp-nvim-lsp" },
     {
         "L3MON4D3/LuaSnip",
-        dependencies = {
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
-        },
+        lazy = true,
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
     },
     {
         "hrsh7th/nvim-cmp",
-        config = function()
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "L3MON4D3/LuaSnip",
+        },
+        opts = function()
             local cmp = require("cmp")
-            require("luasnip.loaders.from_vscode").lazy_load()
-
-            cmp.setup({
+            return {
                 snippet = {
                     expand = function(args)
                         require("luasnip").lsp_expand(args.body)
@@ -32,10 +38,21 @@ return {
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "path" },
                 }, {
                     { name = "buffer" },
                 }),
-            })
+            }
+        end,
+        config = function(_, opts)
+            local cmp = require("cmp")
+            cmp.setup(opts)
+            -- Insert `(` after confirming a function/method
+            local ok, autopairs_cmp = pcall(require, "nvim-autopairs.completion.cmp")
+            if ok then
+                cmp.event:on("confirm_done", autopairs_cmp.on_confirm_done())
+            end
         end,
     },
 }
