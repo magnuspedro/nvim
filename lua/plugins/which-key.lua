@@ -8,7 +8,6 @@ return {
         spec = {
             { "<leader>a", group = "claude" },
             { "<leader>c", group = "code" },
-            { "<leader>g", group = "goto" },
             { "<leader>h", group = "git changes" },
             { "<leader>m", group = "messages" },
             { "<leader>t", group = "tool windows / tests" },

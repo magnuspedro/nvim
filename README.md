@@ -74,7 +74,6 @@ Press `<leader>?` to see buffer-local keymaps, or just press `<leader>` and wait
 | :------------: | :---------------------------------------: |
 |    `<C-p>`     |       Go to file (IntelliJ GotoFile)      |
 |    `<C-f>`     |  Grep in project (IntelliJ Find in Path)  |
-|  `<leader>gf`  |             Grep in project               |
 |  `<leader>/`   |           Search in current file          |
 |     `z=`       |           Spelling suggestions            |
 |  `<leader>km`  |               Search keymaps              |
@@ -121,8 +120,6 @@ The tree follows the current file. It refreshes when you save; press `u` after e
 |      `gi`       | Go to implementation: jumps if one, popup if several (IntelliJ Cmd+Alt+B) |
 |       `K`       |                 Hover docs                   |
 |  `<C-s>` (insert) |            Signature help               |
-|  `<leader>gd`   |         Pick references (Snacks)             |
-|  `<leader>gi`   |       Pick implementations (Snacks)          |
 |   `<leader>D`   |           Go to type definition              |
 |  `<leader>rn`   |                  Rename                      |
 |  `<leader>ca`   |                Code action                   |

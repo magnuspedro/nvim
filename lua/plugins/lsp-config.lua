@@ -102,8 +102,6 @@ return {
                     map("n", "gd", goto_declaration_or_usages, "Goto declaration / show usages")
                     -- Jumps when there is one implementation, popup to choose otherwise
                     map("n", "gi", function() Snacks.picker.lsp_implementations() end, "Goto implementation")
-                    map("n", "<leader>gd", function() Snacks.picker.lsp_references() end, "Pick references")
-                    map("n", "<leader>gi", function() Snacks.picker.lsp_implementations() end, "Pick implementations")
                     map("n", "K", vim.lsp.buf.hover, "Hover")
                     map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
                     map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Remove workspace folder")

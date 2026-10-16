@@ -48,7 +48,6 @@ return {
     },
     keys = {
         { "<C-Bslash>", function() Snacks.explorer() end, mode = { "n", "v" }, desc = "File tree" },
-        { "<leader>gf", function() Snacks.picker.grep() end, desc = "Live grep" },
         { "<C-p>", function() Snacks.picker.files() end, desc = "Goto file" },
         { "<C-f>", function() Snacks.picker.grep() end, desc = "Find in path" },
         { "<leader>s", function() Snacks.picker.buffers() end, desc = "Switcher" },
