@@ -79,6 +79,13 @@ return {
     {
         "nvim-java/nvim-java",
         ft = "java",
+        keys = {
+            { "<leader>tm", "<cmd>JavaTestRunCurrentMethod<cr>", ft = "java", desc = "Test method" },
+            { "<leader>tc", "<cmd>JavaTestRunCurrentClass<cr>", ft = "java", desc = "Test class" },
+            { "<leader>tdm", "<cmd>JavaTestDebugCurrentMethod<cr>", ft = "java", desc = "Debug test method" },
+            { "<leader>tdc", "<cmd>JavaTestDebugCurrentClass<cr>", ft = "java", desc = "Debug test class" },
+            { "<leader>tr", "<cmd>JavaTestViewLastReport<cr>", ft = "java", desc = "Last test report" },
+        },
         config = function()
             require("java").setup({
                 -- Run jdtls on the mise JDK instead of downloading one
