@@ -85,15 +85,11 @@ return {
                     "ts_ls",
                     "pyright",
                     "terraformls",
+                    "kotlin_lsp",
                     "gopls",
                     "copilot", -- inline AI suggestions (Neovim's built-in inline completion)
                 },
             })
-
-            -- Kotlin: installed with `brew install JetBrains/utils/kotlin-lsp` because Mason's package
-            -- has a stale download URL (mason-org/mason-registry#17366)
-            vim.lsp.config("kotlin_lsp", { cmd = { "kotlin-lsp", "--stdio" } })
-            vim.lsp.enable("kotlin_lsp")
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("user-lsp-attach", { clear = true }),
