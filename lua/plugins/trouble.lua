@@ -9,6 +9,9 @@ return {
     "folke/trouble.nvim",
     cmd = "Trouble",
     opts = {
+        keys = {
+            ["<esc>"] = "close",
+        },
         modes = {
             lsp_references = {
                 focus = true,

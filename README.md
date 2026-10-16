@@ -142,6 +142,7 @@ The tree follows the current file. It refreshes when you save; press `u` after e
 |   `]e` / `[e`  |    Next / previous problem (IntelliJ F2 / Shift+F2)      |
 |   `]t` / `[t`  |   Next / previous item in Trouble (or quickfix)          |
 |   `]d` / `[d`  |          Next / previous diagnostic (built-in)           |
+| `<Esc>` (in Trouble) |                 Close the window                    |
 
 `:copen`, `:lopen`, `:grep`, `:make` and anything else that fills the quickfix / location list open
 in Trouble instead of the built-in window.
