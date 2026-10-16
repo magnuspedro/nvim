@@ -7,8 +7,17 @@ return {
     ---@type blink.cmp.Config
     opts = {
         -- <CR> accept, <C-Space> open, <C-e> close, <C-n>/<C-p> select, <C-b>/<C-f> scroll docs,
-        -- <Tab>/<S-Tab> jump in snippets (falls back to Copilot's <Tab> otherwise)
-        keymap = { preset = "enter" },
+        -- <Tab> accepts a Copilot suggestion, otherwise jumps to the next snippet field
+        keymap = {
+            preset = "enter",
+            ["<Tab>"] = {
+                function()
+                    return vim.lsp.inline_completion.get()
+                end,
+                "snippet_forward",
+                "fallback",
+            },
+        },
         completion = {
             menu = { border = "rounded" },
             documentation = { auto_show = true, auto_show_delay_ms = 200, window = { border = "rounded" } },

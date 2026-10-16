@@ -87,6 +87,7 @@ return {
                     "terraformls",
                     "kotlin_lsp",
                     "gopls",
+                    "copilot", -- inline AI suggestions (Neovim's built-in inline completion)
                 },
             })
 
@@ -113,6 +114,14 @@ return {
                     map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
                     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
                     map("n", "<leader>e", vim.diagnostic.open_float, "Show diagnostic")
+
+                    -- Copilot ghost text: <Tab> accepts (see completions.lua), <M-]>/<M-[> cycle
+                    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+                    if client and client:supports_method("textDocument/inlineCompletion", ev.buf) then
+                        vim.lsp.inline_completion.enable(true, { bufnr = ev.buf })
+                        map("i", "<M-]>", function() vim.lsp.inline_completion.select({ count = 1 }) end, "Next suggestion")
+                        map("i", "<M-[>", function() vim.lsp.inline_completion.select({ count = -1 }) end, "Previous suggestion")
+                    end
                 end,
             })
         end,

@@ -172,11 +172,16 @@ values are shown inline while stopped.
 
 ## AI (CodeCompanion / Copilot)
 
+Copilot runs as a language server (`copilot-language-server`, installed by Mason) with Neovim's
+built-in inline completion. Sign in once with `:LspCopilotSignIn`; an existing Copilot login in
+`~/.config/github-copilot` is reused.
+
 |  **Command**  |          **Description**          |
 | :-----------: | :-------------------------------: |
 | `<leader>cc`  |         Toggle AI chat            |
 | `<leader>cp`  |        AI action palette          |
 |    `<Tab>`    | Accept Copilot suggestion (insert) |
+| `<M-]>` / `<M-[>` | Next / previous Copilot suggestion (insert) |
 
 ## Completion (insert mode)
 
@@ -187,7 +192,7 @@ values are shown inline while stopped.
 |    `<C-e>`    |      Close menu            |
 | `<C-n>`/`<C-p>` |   Next / previous item   |
 | `<C-b>`/`<C-f>` |  Scroll docs up / down   |
-| `<Tab>`/`<S-Tab>` | Next / previous snippet field |
+| `<Tab>`/`<S-Tab>` | Next / previous snippet field (`<Tab>` accepts Copilot first) |
 |    `<C-k>`    |  Toggle signature help     |
 
 ## Messages (Noice) & help

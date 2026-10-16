@@ -1,10 +1,5 @@
 return {
     {
-        "github/copilot.vim",
-        event = "InsertEnter",
-        cmd = "Copilot",
-    },
-    {
         "olimorris/codecompanion.nvim",
         cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCLI", "CodeCompanionCmd" },
         dependencies = {
