@@ -1,11 +1,11 @@
--- IntelliJ "Go to Declaration": jump to the declaration, or show usages when already on it
-local function goto_declaration_or_usages()
+-- IntelliJ "Go to Declaration" (Cmd+B): jump to the definition, or show usages when already on it
+local function goto_definition_or_usages()
     local bufnr = vim.api.nvim_get_current_buf()
     local cursor = vim.api.nvim_win_get_cursor(0)
     local row, col = cursor[1] - 1, cursor[2]
     local uri = vim.uri_from_bufnr(bufnr)
 
-    local function on_declaration(results)
+    local function on_definition(results)
         for _, res in pairs(results) do
             local locations = res.result or {}
             if locations.uri or locations.targetUri then
@@ -32,7 +32,7 @@ local function goto_declaration_or_usages()
         "textDocument/definition",
         function(client) return vim.lsp.util.make_position_params(0, client.offset_encoding) end,
         function(results)
-            if on_declaration(results) then
+            if on_definition(results) then
                 Snacks.picker.lsp_references()
             else
                 Snacks.picker.lsp_definitions()
@@ -87,8 +87,8 @@ return {
                         vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
                     end
 
-                    map("n", "grd", goto_declaration_or_usages, "Goto definition / show usages")
-                    map("n", "gd", goto_declaration_or_usages, "Goto definition / show usages")
+                    map("n", "grd", goto_definition_or_usages, "Goto definition / show usages")
+                    map("n", "gd", goto_definition_or_usages, "Goto definition / show usages")
 
                     -- Neovim's default LSP keys, through Snacks pickers: jump when there is one result,
                     -- popup with preview when there are several. grr (usages) is Trouble, see trouble.lua;
