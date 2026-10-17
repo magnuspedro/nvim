@@ -15,6 +15,13 @@ return {
             { "<leader>w", group = "workspace" },
             { "<leader>b", group = "debug" },
             { "g", group = "goto" },
+            -- Neovim's default LSP keys; press `gr` and wait to see them
+            { "gr", group = "lsp" },
+            { "grn", desc = "Rename" },
+            { "gra", desc = "Code action", mode = { "n", "x" } },
+            { "grt", desc = "Goto type definition" },
+            { "grx", desc = "Run codelens" },
+            { "gO", desc = "Document symbols" },
             { "[", group = "prev" },
             { "]", group = "next" },
         },

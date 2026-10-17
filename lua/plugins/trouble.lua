@@ -1,6 +1,6 @@
 -- IntelliJ-style tool windows:
 --   Problems     (Alt+6)      -> <leader>tp project / <leader>tf current file
---   Find Usages  (Alt+F7)     -> gr
+--   Find Usages  (Alt+F7)     -> grr
 --   Structure    (Cmd+7)      -> <leader>ts
 --   Call Hierarchy (Ctrl+Alt+H) -> <leader>ch
 --   Next/prev problem (F2 / Shift+F2) -> ]e / [e
@@ -33,7 +33,7 @@ return {
         { "<leader>tq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix list" },
         { "<leader>tl", "<cmd>Trouble loclist toggle<cr>", desc = "Location list" },
         { "<leader>ch", "<cmd>Trouble lsp_incoming_calls<cr>", desc = "Call hierarchy" },
-        { "gr", "<cmd>Trouble lsp_references<cr>", desc = "Find usages" },
+        { "grr", "<cmd>Trouble lsp_references<cr>", desc = "Find usages" },
         { "]e", function() vim.diagnostic.jump({ count = 1, float = true }) end, desc = "Next problem" },
         { "[e", function() vim.diagnostic.jump({ count = -1, float = true }) end, desc = "Previous problem" },
         {

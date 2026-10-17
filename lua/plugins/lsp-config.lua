@@ -89,8 +89,10 @@ return {
 
                     map("n", "gD", vim.lsp.buf.declaration, "Goto declaration")
                     map("n", "gd", goto_declaration_or_usages, "Goto declaration / show usages")
+                    -- Neovim's defaults cover the rest: grn rename, gra code action, grt type definition,
+                    -- grx run codelens, gO symbols, K hover, <C-s> signature help (grr is Trouble, see trouble.lua)
                     -- Jumps when there is one implementation, popup to choose otherwise
-                    map("n", "gi", function() Snacks.picker.lsp_implementations() end, "Goto implementation")
+                    map("n", "gri", function() Snacks.picker.lsp_implementations() end, "Goto implementation")
                     map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
                     map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Remove workspace folder")
                     map(
@@ -99,9 +101,6 @@ return {
                         function() vim.print(vim.lsp.buf.list_workspace_folders()) end,
                         "List workspace folders"
                     )
-                    map("n", "<leader>D", vim.lsp.buf.type_definition, "Goto type definition")
-                    map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
-                    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
                     map("n", "<leader>e", vim.diagnostic.open_float, "Show diagnostic")
 
                     -- Copilot ghost text: <Tab> accepts (see blink.lua), <M-]>/<M-[> cycle

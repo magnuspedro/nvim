@@ -112,22 +112,26 @@ The tree follows the current file. It refreshes when you save; press `u` after e
 
 ## LSP
 
-|   **Command**   |               **Description**                |
-| :-------------: | :------------------------------------------: |
-|      `gd`       | Go to definition; on the definition itself, usages popup (IntelliJ Cmd+B) |
-|      `gD`       |              Go to declaration               |
-|      `gr`       |    Find usages (Trouble, IntelliJ Alt+F7)    |
-|      `gi`       | Go to implementation: jumps if one, popup if several (IntelliJ Cmd+Alt+B) |
-|       `K`       |                 Hover docs                   |
-|  `<C-s>` (insert) |            Signature help               |
-|   `<leader>D`   |           Go to type definition              |
-|  `<leader>rn`   |                  Rename                      |
-|  `<leader>ca`   |                Code action                   |
-|   `<leader>f`   |                Format file                   |
-|   `<leader>e`   |           Show line diagnostic               |
-|  `<leader>wa`   |           Add workspace folder               |
-|  `<leader>wr`   |          Remove workspace folder             |
-|  `<leader>wl`   |          List workspace folders              |
+Neovim's default LSP keys (`gr` prefix). Press `gr` and wait for which-key to list them.
+
+|   **Command**   |               **Description**                | **Was** |
+| :-------------: | :------------------------------------------: | :-----: |
+|      `gd`       | Go to definition; on the definition itself, usages popup (IntelliJ Cmd+B) | |
+|      `gD`       |              Go to declaration               | |
+|      `grr`      |    Find usages (Trouble, IntelliJ Alt+F7)    | `gr` |
+|      `gri`      | Go to implementation: jumps if one, popup if several (IntelliJ Cmd+Alt+B) | `gi` |
+|      `grt`      |           Go to type definition              | `<leader>D` |
+|      `grn`      |                  Rename                      | `<leader>rn` |
+|      `gra`      |          Code action (normal / visual)       | `<leader>ca` |
+|      `grx`      |                Run codelens                  | |
+|      `gO`       |         Document symbols (picker)            | |
+|       `K`       |                 Hover docs                   | |
+|  `<C-s>` (insert) |            Signature help               | |
+|   `<leader>f`   |                Format file                   | |
+|   `<leader>e`   |           Show line diagnostic               | |
+|  `<leader>wa`   |           Add workspace folder               | |
+|  `<leader>wr`   |          Remove workspace folder             | |
+|  `<leader>wl`   |          List workspace folders              | |
 
 ## Problems & tool windows (Trouble)
 
