@@ -127,7 +127,7 @@ Neovim's default LSP keys (`gr` prefix). Press `gr` and wait for which-key to li
 |      `gO`       |    Document symbols (fuzzy search picker)     | |
 |   `]]` / `[[`   | Next / previous reference of the word under the cursor (highlighted) | |
 |       `K`       |                 Hover docs                   | |
-|  `<C-s>` (insert) |            Signature help               | |
+|  `<C-s>` (insert) | Signature help (also opens by itself on `(` and `,`) | |
 |   `<leader>f`   |                Format file                   | |
 |   `<leader>e`   |           Show line diagnostic               | |
 |  `<leader>wa`   |           Add workspace folder               | |
@@ -152,9 +152,10 @@ Neovim's default LSP keys (`gr` prefix). Press `gr` and wait for which-key to li
 `:copen`, `:lopen`, `:grep`, `:make` and anything else that fills the quickfix / location list open
 in Trouble instead of the built-in window.
 
-## Git changes (gitsigns)
+## Git (gitsigns, Snacks)
 
-Changed lines are marked in the gutter like IntelliJ's change bars.
+Changed lines are marked in the gutter like IntelliJ's change bars, next to the line number and
+any diagnostic sign.
 
 |  **Command**  |          **Description**           |
 | :-----------: | :--------------------------------: |
