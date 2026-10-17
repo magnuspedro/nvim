@@ -114,7 +114,7 @@ The tree follows the current file. It refreshes when you save; press `u` after e
 
 |   **Command**   |               **Description**                |
 | :-------------: | :------------------------------------------: |
-|      `gd`       | Go to declaration; on the declaration itself, usages popup (IntelliJ Cmd+B) |
+|      `gd`       | Go to definition; on the definition itself, usages popup (IntelliJ Cmd+B) |
 |      `gD`       |              Go to declaration               |
 |      `gr`       |    Find usages (Trouble, IntelliJ Alt+F7)    |
 |      `gi`       | Go to implementation: jumps if one, popup if several (IntelliJ Cmd+Alt+B) |
