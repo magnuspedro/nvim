@@ -105,7 +105,7 @@ return {
                     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
                     map("n", "<leader>e", vim.diagnostic.open_float, "Show diagnostic")
 
-                    -- Copilot ghost text: <Tab> accepts (see completions.lua), <M-]>/<M-[> cycle
+                    -- Copilot ghost text: <Tab> accepts (see blink.lua), <M-]>/<M-[> cycle
                     local client = vim.lsp.get_client_by_id(ev.data.client_id)
                     if client and client:supports_method("textDocument/inlineCompletion", ev.buf) then
                         vim.lsp.inline_completion.enable(true, { bufnr = ev.buf })
