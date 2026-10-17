@@ -22,4 +22,11 @@ require("lazy").setup({
     install = { colorscheme = { "gruvbox" } },
     checker = { enabled = true, notify = false },
     change_detection = { notify = false },
+    rocks = { enabled = false }, -- no plugin needs luarocks
+    performance = {
+        rtp = {
+            -- netrw is replaced by the Snacks explorer
+            disabled_plugins = { "gzip", "netrwPlugin", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
+        },
+    },
 })
