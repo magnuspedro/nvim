@@ -53,6 +53,7 @@ return {
         { "<C-p>", function() Snacks.picker.files() end, desc = "Goto file" },
         { "<C-f>", function() Snacks.picker.grep() end, desc = "Find in path" },
         { "<leader>s", function() Snacks.picker.buffers() end, desc = "Switcher" },
+        { "<leader>q", function() Snacks.bufdelete() end, desc = "Close buffer, keep window" },
         { "<leader>/", function() Snacks.picker.lines() end, desc = "Find in file" },
         { "z=", function() Snacks.picker.spelling() end, desc = "Spell suggest" },
         { "<leader>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },

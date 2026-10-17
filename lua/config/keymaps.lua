@@ -16,6 +16,5 @@ map("v", "<leader>p", '"_dP', { desc = "Paste without yank" })
 map("n", "<leader>;", "A;<Esc>", { desc = "Add ; at end of line" })
 map("n", "<leader>,", "A,<Esc>", { desc = "Add , at end of line" })
 
-map({ "n", "v" }, "<leader>q", "<cmd>bp!<bar>sp!<bar>bn!<bar>bd!<cr>", { desc = "Close buffer, keep window" })
 map("n", "<leader>n", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<leader>p", "<cmd>bprev<cr>", { desc = "Previous buffer" })
