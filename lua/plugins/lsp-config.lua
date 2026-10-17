@@ -91,13 +91,12 @@ return {
                     map("n", "gd", goto_declaration_or_usages, "Goto declaration / show usages")
                     -- Jumps when there is one implementation, popup to choose otherwise
                     map("n", "gi", function() Snacks.picker.lsp_implementations() end, "Goto implementation")
-                    map("n", "K", vim.lsp.buf.hover, "Hover")
                     map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
                     map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Remove workspace folder")
                     map(
                         "n",
                         "<leader>wl",
-                        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+                        function() vim.print(vim.lsp.buf.list_workspace_folders()) end,
                         "List workspace folders"
                     )
                     map("n", "<leader>D", vim.lsp.buf.type_definition, "Goto type definition")
