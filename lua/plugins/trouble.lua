@@ -60,11 +60,14 @@ return {
         },
     },
     init = function()
+        local group = vim.api.nvim_create_augroup("user-trouble-qf", { clear = true })
         -- Show quickfix lists (:grep, :make, LSP, ...) in Trouble instead of the builtin window
         vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+            group = group,
             callback = function() vim.cmd("Trouble qflist open") end,
         })
         vim.api.nvim_create_autocmd("BufRead", {
+            group = group,
             callback = function(ev)
                 if vim.bo[ev.buf].buftype ~= "quickfix" then
                     return
