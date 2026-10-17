@@ -226,7 +226,6 @@ built-in inline completion. Sign in once with `:LspCopilotSignIn`; an existing C
 | `<C-n>`/`<C-p>` |   Next / previous item   |
 | `<C-b>`/`<C-f>` |  Scroll docs up / down   |
 | `<Tab>`/`<S-Tab>` | Next / previous snippet field (`<Tab>` accepts Copilot first) |
-|    `<C-k>`    |  Toggle signature help     |
 
 ## Messages (Noice) & help
 

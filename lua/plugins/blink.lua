@@ -20,7 +20,7 @@ return {
             menu = { border = "rounded" },
             documentation = { auto_show = true, auto_show_delay_ms = 200, window = { border = "rounded" } },
         },
-        signature = { enabled = true, window = { border = "rounded" } },
+        -- Signature help comes from Noice (auto-opens on `(` / `,`, <C-s> to show it)
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
         },
