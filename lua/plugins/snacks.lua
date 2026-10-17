@@ -36,9 +36,7 @@ return {
                 },
             },
             actions = {
-                trouble_open = function(...)
-                    return require("trouble.sources.snacks").actions.trouble_open.action(...)
-                end,
+                trouble_open = function(...) return require("trouble.sources.snacks").actions.trouble_open.action(...) end,
             },
             win = {
                 -- <a-t>: send results to Trouble (like IntelliJ "Open in Find Window")

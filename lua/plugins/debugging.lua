@@ -1,9 +1,7 @@
 -- nvim-dap is the main spec so nvim-dap-view is set up however dap gets loaded
 -- (keys below, or nvim-java requiring it when jdtls attaches).
 local function dap(fn)
-    return function()
-        require("dap")[fn]()
-    end
+    return function() require("dap")[fn]() end
 end
 
 return {
@@ -39,7 +37,7 @@ return {
             executable = {
                 command = "dlv",
                 args = { "dap", "-l", "127.0.0.1:${port}" },
-            }
+            },
         }
 
         dap.configurations.go = {
@@ -62,7 +60,7 @@ return {
                 request = "launch",
                 mode = "test",
                 program = "./${relativeFileDirname}",
-            }
+            },
         }
     end,
 }

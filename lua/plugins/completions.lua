@@ -11,9 +11,7 @@ return {
         keymap = {
             preset = "enter",
             ["<Tab>"] = {
-                function()
-                    return vim.lsp.inline_completion.get()
-                end,
+                function() return vim.lsp.inline_completion.get() end,
                 "snippet_forward",
                 "fallback",
             },

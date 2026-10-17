@@ -15,8 +15,12 @@ local function goto_declaration_or_usages()
             end
             for _, loc in ipairs(locations) do
                 local range = loc.targetSelectionRange or loc.range
-                if (loc.targetUri or loc.uri) == uri and range
-                    and range.start.line == row and range.start.character <= col and col <= range["end"].character
+                if
+                    (loc.targetUri or loc.uri) == uri
+                    and range
+                    and range.start.line == row
+                    and range.start.character <= col
+                    and col <= range["end"].character
                 then
                     return true
                 end
@@ -25,15 +29,18 @@ local function goto_declaration_or_usages()
         return false
     end
 
-    vim.lsp.buf_request_all(bufnr, "textDocument/definition", function(client)
-        return vim.lsp.util.make_position_params(0, client.offset_encoding)
-    end, function(results)
-        if on_declaration(results) then
-            Snacks.picker.lsp_references()
-        else
-            Snacks.picker.lsp_definitions()
+    vim.lsp.buf_request_all(
+        bufnr,
+        "textDocument/definition",
+        function(client) return vim.lsp.util.make_position_params(0, client.offset_encoding) end,
+        function(results)
+            if on_declaration(results) then
+                Snacks.picker.lsp_references()
+            else
+                Snacks.picker.lsp_definitions()
+            end
         end
-    end)
+    )
 end
 
 return {
@@ -105,9 +112,12 @@ return {
                     map("n", "K", vim.lsp.buf.hover, "Hover")
                     map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
                     map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, "Remove workspace folder")
-                    map("n", "<leader>wl", function()
-                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                    end, "List workspace folders")
+                    map(
+                        "n",
+                        "<leader>wl",
+                        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+                        "List workspace folders"
+                    )
                     map("n", "<leader>D", vim.lsp.buf.type_definition, "Goto type definition")
                     map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
                     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
@@ -117,8 +127,18 @@ return {
                     local client = vim.lsp.get_client_by_id(ev.data.client_id)
                     if client and client:supports_method("textDocument/inlineCompletion", ev.buf) then
                         vim.lsp.inline_completion.enable(true, { bufnr = ev.buf })
-                        map("i", "<M-]>", function() vim.lsp.inline_completion.select({ count = 1 }) end, "Next suggestion")
-                        map("i", "<M-[>", function() vim.lsp.inline_completion.select({ count = -1 }) end, "Previous suggestion")
+                        map(
+                            "i",
+                            "<M-]>",
+                            function() vim.lsp.inline_completion.select({ count = 1 }) end,
+                            "Next suggestion"
+                        )
+                        map(
+                            "i",
+                            "<M-[>",
+                            function() vim.lsp.inline_completion.select({ count = -1 }) end,
+                            "Previous suggestion"
+                        )
                     end
                 end,
             })

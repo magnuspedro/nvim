@@ -62,9 +62,7 @@ return {
     init = function()
         -- Show quickfix lists (:grep, :make, LSP, ...) in Trouble instead of the builtin window
         vim.api.nvim_create_autocmd("QuickFixCmdPost", {
-            callback = function()
-                vim.cmd("Trouble qflist open")
-            end,
+            callback = function() vim.cmd("Trouble qflist open") end,
         })
         vim.api.nvim_create_autocmd("BufRead", {
             callback = function(ev)
