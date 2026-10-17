@@ -116,8 +116,7 @@ Neovim's default LSP keys (`gr` prefix). Press `gr` and wait for which-key to li
 
 |   **Command**   |               **Description**                | **Was** |
 | :-------------: | :------------------------------------------: | :-----: |
-|      `gd`       | Go to definition; on the definition itself, usages popup (IntelliJ Cmd+B) | |
-|      `gD`       |              Go to declaration               | |
+|      `grd`      | Go to definition; on the definition itself, usages popup (IntelliJ Cmd+B) | `gd` |
 |      `grr`      |    Find usages (Trouble, IntelliJ Alt+F7)    | `gr` |
 |      `gri`      | Go to implementation: jumps if one, popup if several (IntelliJ Cmd+Alt+B) | `gi` |
 |      `grt`      |           Go to type definition              | `<leader>D` |

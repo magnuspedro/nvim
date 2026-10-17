@@ -87,12 +87,11 @@ return {
                         vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
                     end
 
-                    map("n", "gd", goto_declaration_or_usages, "Goto declaration / show usages")
+                    map("n", "grd", goto_declaration_or_usages, "Goto definition / show usages")
 
                     -- Neovim's default LSP keys, through Snacks pickers: jump when there is one result,
                     -- popup with preview when there are several. grr (usages) is Trouble, see trouble.lua;
                     -- grn, gra, grx, K and <C-s> stay built-in (rename and code action use Snacks input / select).
-                    map("n", "gD", function() Snacks.picker.lsp_declarations() end, "Goto declaration")
                     map("n", "gri", function() Snacks.picker.lsp_implementations() end, "Goto implementation")
                     map("n", "grt", function() Snacks.picker.lsp_type_definitions() end, "Goto type definition")
                     map("n", "gO", function() Snacks.picker.lsp_symbols() end, "Document symbols")
