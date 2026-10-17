@@ -88,6 +88,7 @@ return {
                     end
 
                     map("n", "grd", goto_declaration_or_usages, "Goto definition / show usages")
+                    map("n", "gd", goto_declaration_or_usages, "Goto definition / show usages")
 
                     -- Neovim's default LSP keys, through Snacks pickers: jump when there is one result,
                     -- popup with preview when there are several. grr (usages) is Trouble, see trouble.lua;
