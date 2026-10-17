@@ -23,6 +23,13 @@ return {
         -- Signature help comes from Noice (auto-opens on `(` / `,`, <C-s> to show it)
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
+            per_filetype = {
+                lua = { inherit_defaults = true, "lazydev" },
+            },
+            providers = {
+                -- Completes require() paths and plugin APIs; ranked above lua_ls's own items
+                lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
+            },
         },
     },
     opts_extend = { "sources.default" },
