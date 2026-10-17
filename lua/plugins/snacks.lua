@@ -24,6 +24,7 @@ return {
             },
         },
         explorer = { enabled = true, replace_netrw = true },
+        input = { enabled = true }, -- vim.ui.input (LSP rename, ...) in a floating box
         picker = {
             enabled = true,
             ui_select = true,

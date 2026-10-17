@@ -124,7 +124,7 @@ Neovim's default LSP keys (`gr` prefix). Press `gr` and wait for which-key to li
 |      `grn`      |                  Rename                      | `<leader>rn` |
 |      `gra`      |          Code action (normal / visual)       | `<leader>ca` |
 |      `grx`      |                Run codelens                  | |
-|      `gO`       |         Document symbols (picker)            | |
+|      `gO`       |    Document symbols (fuzzy search picker)     | |
 |       `K`       |                 Hover docs                   | |
 |  `<C-s>` (insert) |            Signature help               | |
 |   `<leader>f`   |                Format file                   | |
