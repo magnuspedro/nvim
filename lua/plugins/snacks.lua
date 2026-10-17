@@ -25,6 +25,9 @@ return {
         },
         explorer = { enabled = true, replace_netrw = true },
         input = { enabled = true }, -- vim.ui.input (LSP rename, ...) in a floating box
+        bigfile = { enabled = true }, -- disable LSP, Treesitter, ... on huge files
+        quickfile = { enabled = true }, -- render `nvim file` before plugins load
+        words = { enabled = true }, -- highlight LSP references of the word under the cursor, like IntelliJ
         picker = {
             enabled = true,
             ui_select = true,
@@ -53,5 +56,7 @@ return {
         { "<leader>/", function() Snacks.picker.lines() end, desc = "Find in file" },
         { "z=", function() Snacks.picker.spelling() end, desc = "Spell suggest" },
         { "<leader>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+        { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next reference" },
+        { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Previous reference" },
     },
 }
