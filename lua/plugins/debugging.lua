@@ -1,6 +1,6 @@
 -- nvim-dap is the main spec so nvim-dap-view is set up however dap gets loaded
 -- (keys below, or nvim-java requiring it when jdtls attaches).
-local function dap(fn)
+local function dap_call(fn)
     return function() require("dap")[fn]() end
 end
 
@@ -19,14 +19,14 @@ return {
         },
     },
     keys = {
-        { "<leader>tb", dap("toggle_breakpoint"), desc = "Toggle breakpoint" },
+        { "<leader>tb", dap_call("toggle_breakpoint"), desc = "Toggle breakpoint" },
         { "<leader>bv", "<cmd>DapViewToggle<cr>", desc = "Toggle debug view" },
         { "<leader>bc", "<cmd>DapViewClose<cr>", desc = "Close debug view" },
-        { "<F5>", dap("continue"), desc = "Debug: continue" },
-        { "<F7>", dap("step_into"), desc = "Debug: step into" },
-        { "<F8>", dap("step_over"), desc = "Debug: step over" },
-        { "<F9>", dap("step_out"), desc = "Debug: step out" },
-        { "<F10>", dap("run_last"), desc = "Debug: run last" },
+        { "<F5>", dap_call("continue"), desc = "Debug: continue" },
+        { "<F7>", dap_call("step_into"), desc = "Debug: step into" },
+        { "<F8>", dap_call("step_over"), desc = "Debug: step over" },
+        { "<F9>", dap_call("step_out"), desc = "Debug: step out" },
+        { "<F10>", dap_call("run_last"), desc = "Debug: run last" },
     },
     config = function()
         local dap = require("dap")
