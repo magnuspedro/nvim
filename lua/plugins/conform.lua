@@ -16,7 +16,7 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            go = { "goimports", "gofmt" },
+            go = { "goimports" }, -- also applies gofmt formatting
         },
         -- Everything else is formatted by its language server (jdtls, ts_ls, ...)
         default_format_opts = { lsp_format = "fallback" },
