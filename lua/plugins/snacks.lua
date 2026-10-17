@@ -28,6 +28,7 @@ return {
         bigfile = { enabled = true }, -- disable LSP, Treesitter, ... on huge files
         quickfile = { enabled = true }, -- render `nvim file` before plugins load
         words = { enabled = true }, -- highlight LSP references of the word under the cursor, like IntelliJ
+        statuscolumn = { enabled = true }, -- diagnostic sign | line number | git bar, like the IntelliJ gutter
         picker = {
             enabled = true,
             ui_select = true,
