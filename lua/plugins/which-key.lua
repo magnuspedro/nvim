@@ -11,6 +11,7 @@ return {
             { "<leader>h", group = "git changes" },
             { "<leader>m", group = "messages" },
             { "<leader>t", group = "tool windows / tests" },
+            { "<leader>td", group = "debug tests" },
             { "<leader>w", group = "workspace" },
             { "<leader>b", group = "debug" },
             { "g", group = "goto" },
