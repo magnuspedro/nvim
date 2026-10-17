@@ -13,15 +13,16 @@ lua/plugins/  one file per plugin (or group of related plugins)
 
 Mac:
 ```shell
-brew install neovim ripgrep fd tree-sitter-cli
+brew install neovim ripgrep fd tree-sitter-cli lazygit
 ```
 
 Archlinux:
 ```shell
-sudo pacman -S neovim ripgrep fd tree-sitter-cli
+sudo pacman -S neovim ripgrep fd tree-sitter-cli lazygit
 ```
 
 - **ripgrep / fd**: used by the Snacks picker (grep and file search).
+- **lazygit**: git UI opened with `<leader>gg`.
 - **tree-sitter-cli** (0.26.1+, not from npm) and a C compiler: nvim-treesitter (`main` branch) builds parsers with them.
 - **A [Nerd Font](https://www.nerdfonts.com/)** in the terminal for icons.
 - **Java**: jdtls runs on the mise JDK at `~/.local/share/mise/installs/java/openjdk-25`. Project runtimes
@@ -162,6 +163,8 @@ Changed lines are marked in the gutter like IntelliJ's change bars.
 | `<leader>hr`  | Rollback change (or selected lines) |
 | `<leader>hd`  |      Diff file against index       |
 | `<leader>hb`  |            Blame line              |
+| `<leader>gg`  |    Lazygit (floating window)       |
+| `<leader>gb`  | Open file / selected lines on GitHub |
 
 ## Debugger & tests
 
