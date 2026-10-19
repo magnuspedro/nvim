@@ -1,48 +1,19 @@
-# Created by https://www.toptal.com/developers/gitignore/api/lua
-# Edit at https://www.toptal.com/developers/gitignore?templates=lua
+# macOS
+.DS_Store
 
-### Lua ###
-# Compiled Lua sources
+# Vim swap, backup and undo files
+*.swp
+*.swo
+*~
+*.un~
+
+# Lua language server / tooling caches
+.luarc.json
+.luarc.jsonc
 luac.out
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+# jdtls / nvim-java project workspace
+workspace/
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-workspace
-
-# End of https://www.toptal.com/developers/gitignore/api/lua
+# Local tool settings
+.claude/
